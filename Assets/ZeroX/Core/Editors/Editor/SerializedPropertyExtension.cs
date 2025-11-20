@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Reflection;
 using UnityEditor;
+using ZeroX.Extensions;
 
 namespace ZeroX.Editors
 {
@@ -9,26 +10,6 @@ namespace ZeroX.Editors
     {
         static BindingFlags bindingFlags = BindingFlags.Default | BindingFlags.Instance | BindingFlags.Public |
                                            BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.FlattenHierarchy;
-
-
-
-        #region Utility
-
-        private static FieldInfo FindFieldInfo(Type type, string fieldName)
-        {
-            do
-            {
-                var fieldInfo = type.GetField(fieldName, bindingFlags);
-                if (fieldInfo != null)
-                    return fieldInfo;
-
-                type = type.BaseType;
-            } while (type != null);
-
-            return null;
-        }
-
-        #endregion
         
         
         
@@ -44,12 +25,12 @@ namespace ZeroX.Editors
                 //ElementOfList sẽ có dạng: listRule.Array.data[elementIndex].xxx
                 bool isElementOfList = i + 1 < listFieldName.Length &&
                               listFieldName[i] == "Array" &&
-                              listFieldName[i + 1] == "data[";
+                              listFieldName[i + 1].StartsWith("data[");
 
                 
                 if (isElementOfList == false)
                 {
-                    var fieldInfo = FindFieldInfo(currentType, fieldName);
+                    var fieldInfo = currentType.GetFieldDeep(fieldName);
                     currentType = fieldInfo.FieldType;
                 }
                 else
@@ -96,7 +77,7 @@ namespace ZeroX.Editors
                 }
                 else
                 {
-                    var fieldInfo = FindFieldInfo(currentType, fieldName);
+                    var fieldInfo = currentType.GetFieldDeep(fieldName);
                     var obj = fieldInfo.GetValue(currentObject);
 
                     currentType = fieldInfo.FieldType;
@@ -179,17 +160,14 @@ namespace ZeroX.Editors
 
         #region Misc
 
-        /// <summary>
-        /// Nếu trả về chuỗi rỗng thì parent là SerializedObject
-        /// </summary>
-        public static string GetParentPropertyPath(this SerializedProperty property)
+        private static string GetParentPropertyPath(string path)
         {
-            string path = property.propertyPath;
             int dotIndex = path.LastIndexOf('.');
             
             if (dotIndex == -1)
                 return "";
 
+            //Nếu là dạng list thì phải xử lý đặc biệt
             if (dotIndex + 5 < path.Length && dotIndex - 5 > 0)
             {
                 if (path[dotIndex + 1] == 'd' &&
@@ -205,11 +183,20 @@ namespace ZeroX.Editors
                     path[dotIndex - 1] == 'y'
                    )
                 {
-                    return path.Substring(0, dotIndex - 6);
+                    string pathOfList = path.Substring(0, dotIndex - 6); //Tới đây mới có được path của listSp, chưa phải path của sp chứa list
+                    return GetParentPropertyPath(pathOfList);
                 }
             }
             
             return path.Substring(0, dotIndex);
+        }
+        
+        /// <summary>
+        /// Nếu trả về chuỗi rỗng thì parent là SerializedObject
+        /// </summary>
+        public static string GetParentPropertyPath(this SerializedProperty property)
+        {
+            return GetParentPropertyPath(property.propertyPath);
         }
 
         /// <summary>

@@ -81,7 +81,6 @@ public partial class ManagerGame //_Core
 			_selectingTube = tube;
 	}
 
-	Cell _selectingCell;
 	Plane plane = new Plane(Vector3.up, Vector3.zero);
 	private void HandleRaycastDragMechanism(Vector2 mousePosition)
 	{
@@ -89,7 +88,6 @@ public partial class ManagerGame //_Core
 			return;
 		
 		OnMoveTube(mousePosition);
-		RaycastWhenMoveTube();
 	}
 	
 	private void OnMoveTube(Vector2 mousePosition)
@@ -101,67 +99,15 @@ public partial class ManagerGame //_Core
 		_selectingTube.transform.position = pos;
 	}
 	
-	private void RaycastWhenMoveTube()
-	{
-		Vector3 objectScreenPosition = mainCamera.WorldToScreenPoint(_selectingTube.transform.position);
-
-		Ray ray = mainCamera.ScreenPointToRay(objectScreenPosition);
-
-		RaycastHit hit;
-
-		if (Physics.Raycast(ray, out hit, 20, RaycastableDrag))
-		{
-			
-			var cell = hit.collider.GetComponent<Cell>();
-			if (_selectingCell !=null && _selectingCell != cell)
-			{
-				_selectingCell.ScaleUp(false);
-			}
-
-			_selectingCell = cell;
-			if (_selectingCell.IsEmpty())
-			{
-				_selectingCell.ScaleUp(true);
-			}
-		}
-		else
-		{
-			if (_selectingCell != null)
-			{
-				_selectingCell.ScaleUp(false);
-				_selectingCell = null;
-			}
-		}
-	}
-
 	private void HandlePutDownTube()
 	{
-		if (_selectingTube != null)
-		{
-			if (_selectingCell != null && _selectingCell.IsEmpty())
-			{
-				_selectingCell.AddTube(_selectingTube);
-				GameEvents.OnTubePutDown.Emit(_selectingTube);
-				
-				Debug.Log("put down cell point: "+_selectingCell.GetPointToMerge());
-				_selectingCell.AutoMerge();
-				_selectingCell.Tube.OnPioritySpend();
-				// EventDispatcher.Instance.Dispatch(EventKey.OnInputReleaseHexaBlock);
-			}
-			else
-				_selectingTube.RollBackOriginPosition();
-		}
+		
 		ClearData();
 	}
 	
 	public void ClearData()
 	{
-		if (_selectingCell != null)
-		{
-			_selectingCell.ScaleUp(false);
-			_selectingCell = null;
-		}
-		_selectingTube = null;
+		
 		// isDowning = false;
 	}
 	

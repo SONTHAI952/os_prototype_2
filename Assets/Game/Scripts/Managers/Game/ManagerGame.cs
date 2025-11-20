@@ -16,7 +16,7 @@ public partial class ManagerGame : Singleton_ManualSpawn<ManagerGame>
     [SerializeField] private SOGameFeelsSettings gameFeelsSettings;
     [Header("Controller")]
     [SerializeField] BoardController boardController;
-    [SerializeField] SpawnController spawnController;
+    [SerializeField] PlayerController playerController;
     [SerializeField] PoolController poolController;
     
     private Camera mainCamera;
@@ -24,7 +24,7 @@ public partial class ManagerGame : Singleton_ManualSpawn<ManagerGame>
     private bool   isPointerOverUI;
     
     public BoardController BoardController => boardController;
-    public SpawnController SpawnController => spawnController;
+    public PlayerController PlayerController => playerController;
     public PoolController PoolController => poolController;
     
     protected void Awake()
