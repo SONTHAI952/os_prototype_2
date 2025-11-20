@@ -8,6 +8,8 @@ public enum CellType
     Tree,
     Wood,
     Fish,
+    Start,
+    Finish
 }
 
 [Serializable] 

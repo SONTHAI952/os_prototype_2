@@ -7,11 +7,12 @@ using Unity.VisualScripting;
 
 public enum PatternGroupType
 {
-	SW,
+	S,
 	A,
 	B,
 	C,
-	D
+	D,
+	W
 }
 
 [CreateAssetMenu(fileName = "SOMapTable", menuName = "Scriptable Objects/SOMapTable")]
