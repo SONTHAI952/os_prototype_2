@@ -969,316 +969,316 @@ MonoBehaviour:
     - patterns:
         listRow:
         - listCell:
-          - Type: 0
+          - Type: 1
             cell: {fileID: 0}
-          - Type: 0
+          - Type: 1
             cell: {fileID: 0}
-          - Type: 0
+          - Type: 1
+            cell: {fileID: 0}
+        - listCell:
+          - Type: 1
+            cell: {fileID: 0}
+          - Type: 1
+            cell: {fileID: 0}
+          - Type: 1
             cell: {fileID: 0}
         - listCell:
           - Type: 0
             cell: {fileID: 0}
-          - Type: 0
+          - Type: 1
             cell: {fileID: 0}
           - Type: 0
             cell: {fileID: 0}
         - listCell:
-          - Type: 0
+          - Type: 4
             cell: {fileID: 0}
-          - Type: 0
+          - Type: 1
             cell: {fileID: 0}
-          - Type: 0
-            cell: {fileID: 0}
-        - listCell:
-          - Type: 0
-            cell: {fileID: 0}
-          - Type: 0
-            cell: {fileID: 0}
-          - Type: 0
+          - Type: 4
             cell: {fileID: 0}
         - listCell:
           - Type: 0
             cell: {fileID: 0}
-          - Type: 0
+          - Type: 1
             cell: {fileID: 0}
           - Type: 0
             cell: {fileID: 0}
         - listCell:
-          - Type: 0
+          - Type: 1
             cell: {fileID: 0}
-          - Type: 0
+          - Type: 1
             cell: {fileID: 0}
-          - Type: 0
+          - Type: 1
             cell: {fileID: 0}
       diffucult: 1
     - patterns:
         listRow:
         - listCell:
-          - Type: 0
+          - Type: 1
+            cell: {fileID: 0}
+          - Type: 1
+            cell: {fileID: 0}
+          - Type: 1
+            cell: {fileID: 0}
+        - listCell:
+          - Type: 1
             cell: {fileID: 0}
           - Type: 0
             cell: {fileID: 0}
           - Type: 0
             cell: {fileID: 0}
         - listCell:
-          - Type: 0
+          - Type: 1
             cell: {fileID: 0}
-          - Type: 0
-            cell: {fileID: 0}
-          - Type: 0
-            cell: {fileID: 0}
-        - listCell:
-          - Type: 0
-            cell: {fileID: 0}
-          - Type: 0
+          - Type: 4
             cell: {fileID: 0}
           - Type: 0
             cell: {fileID: 0}
         - listCell:
-          - Type: 0
+          - Type: 1
             cell: {fileID: 0}
-          - Type: 0
+          - Type: 1
             cell: {fileID: 0}
-          - Type: 0
-            cell: {fileID: 0}
-        - listCell:
-          - Type: 0
-            cell: {fileID: 0}
-          - Type: 0
-            cell: {fileID: 0}
-          - Type: 0
+          - Type: 1
             cell: {fileID: 0}
         - listCell:
           - Type: 0
             cell: {fileID: 0}
-          - Type: 0
+          - Type: 4
             cell: {fileID: 0}
-          - Type: 0
+          - Type: 1
+            cell: {fileID: 0}
+        - listCell:
+          - Type: 1
+            cell: {fileID: 0}
+          - Type: 1
+            cell: {fileID: 0}
+          - Type: 1
             cell: {fileID: 0}
       diffucult: 1
     - patterns:
         listRow:
         - listCell:
+          - Type: 1
+            cell: {fileID: 0}
+          - Type: 1
+            cell: {fileID: 0}
+          - Type: 1
+            cell: {fileID: 0}
+        - listCell:
           - Type: 0
             cell: {fileID: 0}
+          - Type: 4
+            cell: {fileID: 0}
+          - Type: 1
+            cell: {fileID: 0}
+        - listCell:
+          - Type: 1
+            cell: {fileID: 0}
+          - Type: 1
+            cell: {fileID: 0}
+          - Type: 1
+            cell: {fileID: 0}
+        - listCell:
+          - Type: 1
+            cell: {fileID: 0}
+          - Type: 4
+            cell: {fileID: 0}
           - Type: 0
+            cell: {fileID: 0}
+        - listCell:
+          - Type: 1
+            cell: {fileID: 0}
+          - Type: 1
             cell: {fileID: 0}
           - Type: 0
             cell: {fileID: 0}
         - listCell:
           - Type: 0
             cell: {fileID: 0}
-          - Type: 0
+          - Type: 1
             cell: {fileID: 0}
-          - Type: 0
-            cell: {fileID: 0}
-        - listCell:
-          - Type: 0
-            cell: {fileID: 0}
-          - Type: 0
-            cell: {fileID: 0}
-          - Type: 0
-            cell: {fileID: 0}
-        - listCell:
-          - Type: 0
-            cell: {fileID: 0}
-          - Type: 0
-            cell: {fileID: 0}
-          - Type: 0
-            cell: {fileID: 0}
-        - listCell:
-          - Type: 0
-            cell: {fileID: 0}
-          - Type: 0
-            cell: {fileID: 0}
-          - Type: 0
-            cell: {fileID: 0}
-        - listCell:
-          - Type: 0
-            cell: {fileID: 0}
-          - Type: 0
-            cell: {fileID: 0}
-          - Type: 0
+          - Type: 1
             cell: {fileID: 0}
       diffucult: 1
     - patterns:
         listRow:
         - listCell:
-          - Type: 0
+          - Type: 1
             cell: {fileID: 0}
-          - Type: 0
+          - Type: 1
+            cell: {fileID: 0}
+          - Type: 1
+            cell: {fileID: 0}
+        - listCell:
+          - Type: 4
+            cell: {fileID: 0}
+          - Type: 1
+            cell: {fileID: 0}
+          - Type: 4
+            cell: {fileID: 0}
+        - listCell:
+          - Type: 1
+            cell: {fileID: 0}
+          - Type: 1
+            cell: {fileID: 0}
+          - Type: 1
+            cell: {fileID: 0}
+        - listCell:
+          - Type: 1
+            cell: {fileID: 0}
+          - Type: 2
+            cell: {fileID: 0}
+          - Type: 1
+            cell: {fileID: 0}
+        - listCell:
+          - Type: 1
+            cell: {fileID: 0}
+          - Type: 1
             cell: {fileID: 0}
           - Type: 0
             cell: {fileID: 0}
         - listCell:
-          - Type: 0
+          - Type: 2
             cell: {fileID: 0}
-          - Type: 0
+          - Type: 1
             cell: {fileID: 0}
-          - Type: 0
-            cell: {fileID: 0}
-        - listCell:
-          - Type: 0
-            cell: {fileID: 0}
-          - Type: 0
-            cell: {fileID: 0}
-          - Type: 0
-            cell: {fileID: 0}
-        - listCell:
-          - Type: 0
-            cell: {fileID: 0}
-          - Type: 0
-            cell: {fileID: 0}
-          - Type: 0
-            cell: {fileID: 0}
-        - listCell:
-          - Type: 0
-            cell: {fileID: 0}
-          - Type: 0
-            cell: {fileID: 0}
-          - Type: 0
-            cell: {fileID: 0}
-        - listCell:
-          - Type: 0
-            cell: {fileID: 0}
-          - Type: 0
-            cell: {fileID: 0}
-          - Type: 0
+          - Type: 1
             cell: {fileID: 0}
       diffucult: 2
     - patterns:
         listRow:
         - listCell:
+          - Type: 1
+            cell: {fileID: 0}
+          - Type: 3
+            cell: {fileID: 0}
+          - Type: 1
+            cell: {fileID: 0}
+        - listCell:
           - Type: 0
             cell: {fileID: 0}
-          - Type: 0
+          - Type: 3
             cell: {fileID: 0}
           - Type: 0
             cell: {fileID: 0}
         - listCell:
           - Type: 0
             cell: {fileID: 0}
-          - Type: 0
+          - Type: 1
             cell: {fileID: 0}
           - Type: 0
             cell: {fileID: 0}
         - listCell:
-          - Type: 0
+          - Type: 4
             cell: {fileID: 0}
-          - Type: 0
+          - Type: 3
             cell: {fileID: 0}
-          - Type: 0
-            cell: {fileID: 0}
-        - listCell:
-          - Type: 0
-            cell: {fileID: 0}
-          - Type: 0
-            cell: {fileID: 0}
-          - Type: 0
+          - Type: 4
             cell: {fileID: 0}
         - listCell:
           - Type: 0
             cell: {fileID: 0}
-          - Type: 0
+          - Type: 3
             cell: {fileID: 0}
           - Type: 0
             cell: {fileID: 0}
         - listCell:
-          - Type: 0
+          - Type: 1
             cell: {fileID: 0}
-          - Type: 0
+          - Type: 3
             cell: {fileID: 0}
-          - Type: 0
+          - Type: 1
             cell: {fileID: 0}
       diffucult: 2
     - patterns:
         listRow:
         - listCell:
-          - Type: 0
+          - Type: 2
             cell: {fileID: 0}
-          - Type: 0
+          - Type: 1
             cell: {fileID: 0}
-          - Type: 0
-            cell: {fileID: 0}
-        - listCell:
-          - Type: 0
-            cell: {fileID: 0}
-          - Type: 0
-            cell: {fileID: 0}
-          - Type: 0
+          - Type: 1
             cell: {fileID: 0}
         - listCell:
-          - Type: 0
+          - Type: 3
             cell: {fileID: 0}
-          - Type: 0
+          - Type: 1
             cell: {fileID: 0}
-          - Type: 0
-            cell: {fileID: 0}
-        - listCell:
-          - Type: 0
-            cell: {fileID: 0}
-          - Type: 0
-            cell: {fileID: 0}
-          - Type: 0
+          - Type: 3
             cell: {fileID: 0}
         - listCell:
-          - Type: 0
+          - Type: 4
             cell: {fileID: 0}
-          - Type: 0
+          - Type: 3
             cell: {fileID: 0}
-          - Type: 0
+          - Type: 4
             cell: {fileID: 0}
         - listCell:
-          - Type: 0
+          - Type: 3
+            cell: {fileID: 0}
+          - Type: 3
+            cell: {fileID: 0}
+          - Type: 3
+            cell: {fileID: 0}
+        - listCell:
+          - Type: 3
             cell: {fileID: 0}
           - Type: 0
             cell: {fileID: 0}
-          - Type: 0
+          - Type: 3
+            cell: {fileID: 0}
+        - listCell:
+          - Type: 3
+            cell: {fileID: 0}
+          - Type: 3
+            cell: {fileID: 0}
+          - Type: 2
             cell: {fileID: 0}
       diffucult: 3
     - patterns:
         listRow:
         - listCell:
-          - Type: 0
+          - Type: 3
             cell: {fileID: 0}
-          - Type: 0
+          - Type: 3
             cell: {fileID: 0}
-          - Type: 0
-            cell: {fileID: 0}
-        - listCell:
-          - Type: 0
-            cell: {fileID: 0}
-          - Type: 0
-            cell: {fileID: 0}
-          - Type: 0
+          - Type: 3
             cell: {fileID: 0}
         - listCell:
           - Type: 0
             cell: {fileID: 0}
-          - Type: 0
+          - Type: 4
             cell: {fileID: 0}
-          - Type: 0
-            cell: {fileID: 0}
-        - listCell:
-          - Type: 0
-            cell: {fileID: 0}
-          - Type: 0
-            cell: {fileID: 0}
-          - Type: 0
+          - Type: 3
             cell: {fileID: 0}
         - listCell:
-          - Type: 0
+          - Type: 1
             cell: {fileID: 0}
-          - Type: 0
+          - Type: 3
             cell: {fileID: 0}
-          - Type: 0
+          - Type: 1
             cell: {fileID: 0}
         - listCell:
-          - Type: 0
+          - Type: 1
             cell: {fileID: 0}
-          - Type: 0
+          - Type: 4
             cell: {fileID: 0}
-          - Type: 0
+          - Type: 1
+            cell: {fileID: 0}
+        - listCell:
+          - Type: 3
+            cell: {fileID: 0}
+          - Type: 3
+            cell: {fileID: 0}
+          - Type: 2
+            cell: {fileID: 0}
+        - listCell:
+          - Type: 2
+            cell: {fileID: 0}
+          - Type: 3
+            cell: {fileID: 0}
+          - Type: 3
             cell: {fileID: 0}
       diffucult: 3
   - groupType: 0
