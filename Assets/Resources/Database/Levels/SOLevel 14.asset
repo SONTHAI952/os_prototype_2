@@ -14,172 +14,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelID: 14
   pathID: 14
-  target: 10
-  timer: 60
-  grid:
-    listRow:
-    - listCell:
-      - Type: 1
-        cell: {fileID: 0}
-        neigbors:
-        - {x: 0, y: 2}
-        - {x: 1, y: 1}
-        - {x: 1, y: 0}
-        colors: 
-        tube: {fileID: 0}
-      - Type: 2
-        cell: {fileID: 0}
-        neigbors:
-        - {x: 0, y: 0}
-        - {x: 1, y: 1}
-        - {x: 2, y: 0}
-        colors: 0300000003000000
-        tube: {fileID: 0}
-      - Type: 3
-        cell: {fileID: 0}
-        neigbors:
-        - {x: 3, y: 1}
-        - {x: 2, y: 1}
-        - {x: 1, y: 1}
-        - {x: 1, y: 0}
-        - {x: 3, y: 0}
-        colors: 
-        tube: {fileID: 0}
-      - Type: 1
-        cell: {fileID: 0}
-        neigbors:
-        - {x: 3, y: 1}
-        - {x: 2, y: 0}
-        - {x: 4, y: 0}
-        colors: 
-        tube: {fileID: 0}
-      - Type: 3
-        cell: {fileID: 0}
-        neigbors:
-        - {x: 4, y: 2}
-        - {x: 3, y: 1}
-        - {x: 3, y: 0}
-        colors: 
-        tube: {fileID: 0}
-    - listCell:
-      - Type: 0
-        cell: {fileID: 0}
-        neigbors: []
-        colors: 
-        tube: {fileID: 0}
-      - Type: 1
-        cell: {fileID: 0}
-        neigbors:
-        - {x: 1, y: 2}
-        - {x: 0, y: 0}
-        - {x: 1, y: 0}
-        - {x: 2, y: 0}
-        - {x: 2, y: 1}
-        colors: 
-        tube: {fileID: 0}
-      - Type: 3
-        cell: {fileID: 0}
-        neigbors:
-        - {x: 2, y: 2}
-        - {x: 3, y: 1}
-        - {x: 1, y: 1}
-        - {x: 1, y: 2}
-        - {x: 3, y: 2}
-        - {x: 2, y: 0}
-        colors: 
-        tube: {fileID: 0}
-      - Type: 2
-        cell: {fileID: 0}
-        neigbors:
-        - {x: 3, y: 2}
-        - {x: 4, y: 0}
-        - {x: 3, y: 0}
-        - {x: 2, y: 0}
-        - {x: 2, y: 1}
-        colors: 0500000005000000
-        tube: {fileID: 0}
-      - Type: 0
-        cell: {fileID: 0}
-        neigbors: []
-        colors: 
-        tube: {fileID: 0}
-    - listCell:
-      - Type: 3
-        cell: {fileID: 0}
-        neigbors:
-        - {x: 1, y: 3}
-        - {x: 0, y: 0}
-        - {x: 1, y: 2}
-        colors: 
-        tube: {fileID: 0}
-      - Type: 2
-        cell: {fileID: 0}
-        neigbors:
-        - {x: 1, y: 3}
-        - {x: 0, y: 2}
-        - {x: 1, y: 1}
-        - {x: 2, y: 1}
-        - {x: 2, y: 2}
-        colors: 000000000300000003000000
-        tube: {fileID: 0}
-      - Type: 3
-        cell: {fileID: 0}
-        neigbors:
-        - {x: 3, y: 3}
-        - {x: 1, y: 3}
-        - {x: 1, y: 2}
-        - {x: 3, y: 2}
-        - {x: 2, y: 1}
-        colors: 
-        tube: {fileID: 0}
-      - Type: 1
-        cell: {fileID: 0}
-        neigbors:
-        - {x: 3, y: 3}
-        - {x: 4, y: 2}
-        - {x: 3, y: 1}
-        - {x: 2, y: 1}
-        - {x: 2, y: 2}
-        colors: 
-        tube: {fileID: 0}
-      - Type: 1
-        cell: {fileID: 0}
-        neigbors:
-        - {x: 3, y: 3}
-        - {x: 4, y: 0}
-        - {x: 3, y: 2}
-        colors: 
-        tube: {fileID: 0}
-    - listCell:
-      - Type: 0
-        cell: {fileID: 0}
-        neigbors: []
-        colors: 
-        tube: {fileID: 0}
-      - Type: 1
-        cell: {fileID: 0}
-        neigbors:
-        - {x: 2, y: 2}
-        - {x: 1, y: 2}
-        - {x: 0, y: 2}
-        colors: 
-        tube: {fileID: 0}
-      - Type: 0
-        cell: {fileID: 0}
-        neigbors: []
-        colors: 
-        tube: {fileID: 0}
-      - Type: 2
-        cell: {fileID: 0}
-        neigbors:
-        - {x: 2, y: 2}
-        - {x: 3, y: 2}
-        - {x: 4, y: 2}
-        colors: 0200000002000000
-        tube: {fileID: 0}
-      - Type: 0
-        cell: {fileID: 0}
-        neigbors: []
-        colors: 
-        tube: {fileID: 0}
-  colorIDList: 0000000002000000030000000500000001000000
+  patternDatas:
+  - groupType: 0
+    id: 0
+    diffucult: 0
+  - groupType: 1
+    id: 0
+    diffucult: 1
+  - groupType: 3
+    id: 0
+    diffucult: 2
+  - groupType: 2
+    id: 0
+    diffucult: 1
+  - groupType: 4
+    id: 0
+    diffucult: 2
+  - groupType: 4
+    id: 0
+    diffucult: 3
+  - groupType: 1
+    id: 0
+    diffucult: 2
+  - groupType: 2
+    id: 0
+    diffucult: 3
+  - groupType: 3
+    id: 0
+    diffucult: 2
+  - groupType: 4
+    id: 0
+    diffucult: 3
+  - groupType: 2
+    id: 0
+    diffucult: 3
+  - groupType: 5
+    id: 0
+    diffucult: 0

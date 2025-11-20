@@ -8,6 +8,7 @@ using System.Linq;
 public class LevelPatternData
 {
 	public PatternGroupType groupType;
+	public int id;
 	public int diffucult;
 }
 

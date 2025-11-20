@@ -14,7 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelID: 1
   pathID: 1
-  patternDatas: []
-  cellDatas:
-  - listRow: []
-  - listRow: []
+  patternDatas:
+  - groupType: 0
+    id: 0
+    diffucult: 0
+  - groupType: 1
+    id: 1
+    diffucult: 1
+  - groupType: 2
+    id: 1
+    diffucult: 1
+  - groupType: 5
+    id: 0
+    diffucult: 0
