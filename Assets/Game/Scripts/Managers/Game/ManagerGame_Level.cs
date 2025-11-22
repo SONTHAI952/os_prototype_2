@@ -59,11 +59,10 @@ public partial class ManagerGame //_Level
 		if (currentLevelConfig)
 		{
 			_currentAmount = 0;
-			ManagerUI.Instance.UpdateTimer(_currentSecond);
 			
-			poolController.Initialize();
+			// poolController.Initialize();
 			boardController.Initialize(currentLevelConfig);
-			playerController.Initialize();
+			// playerController.Initialize();
 			
 			isInitialized = true;
 			TrackingGameResult();

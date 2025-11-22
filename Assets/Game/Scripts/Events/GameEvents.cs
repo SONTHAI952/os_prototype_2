@@ -12,5 +12,4 @@ public static class GameEvents
 	public static readonly Subject<GameResult> OnOutOfTime      = new();
 	public static readonly Subject OnStartPlaying = new();
 	public static readonly Subject OnBallCollect = new();
-	public static readonly Subject<Tube> OnTubePutDown        = new();
 }

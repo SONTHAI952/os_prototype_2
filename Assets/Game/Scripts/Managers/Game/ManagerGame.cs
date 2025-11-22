@@ -25,6 +25,7 @@ public partial class ManagerGame : Singleton_ManualSpawn<ManagerGame>
     
     public BoardController BoardController => boardController;
     public PlayerController PlayerController => playerController;
+    public SOGameFeelsSettings GameFeelsSettings => gameFeelsSettings;
     public PoolController PoolController => poolController;
     
     protected void Awake()

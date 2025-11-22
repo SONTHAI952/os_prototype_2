@@ -11,11 +11,9 @@ public class BoardController : MonoBehaviour
 {
     [SerializeField] Transform container;
     [SerializeField] Cell tilePrefab;
-    [SerializeField] Pipe pipePrefab;
     [SerializeField] SOLevelConfig levelConfig;
     [SerializeField] Grid<CellData> grid;
     
-    private List<Pipe> pipes;
     
     public int Width = 0; 
     public int Length = 0; 

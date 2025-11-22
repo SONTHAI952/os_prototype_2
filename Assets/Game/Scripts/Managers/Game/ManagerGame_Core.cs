@@ -69,34 +69,17 @@ public partial class ManagerGame //_Core
 		_turretRunningAssignments.Clear();
 	}
 	
-	private Tube _selectingTube;
 	private async void HandleRaycastMechanism(Vector2 position)
 	{
 		if (!_canCountDown)
 			GameEvents.OnStartPlaying.Emit();
 		
-		if (!TryPhysicsRaycast(mainCamera.ScreenPointToRay(position), out var raycastHit)) return;
-		var tube = raycastHit.collider.GetComponent<Tube>();
-		if(tube.PickUpable)
-			_selectingTube = tube;
 	}
 
 	Plane plane = new Plane(Vector3.up, Vector3.zero);
 	private void HandleRaycastDragMechanism(Vector2 mousePosition)
 	{
-		if(_selectingTube == null) 
-			return;
 		
-		OnMoveTube(mousePosition);
-	}
-	
-	private void OnMoveTube(Vector2 mousePosition)
-	{
-		var ray = mainCamera.ScreenPointToRay(mousePosition);
-		plane.Raycast(ray, out float distance);
-		Vector3 pos = ray.GetPoint(distance);
-		pos.y += offsetY;
-		_selectingTube.transform.position = pos;
 	}
 	
 	private void HandlePutDownTube()

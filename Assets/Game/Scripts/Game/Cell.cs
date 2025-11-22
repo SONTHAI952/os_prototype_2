@@ -31,14 +31,10 @@ public class Cell : MonoBehaviour
 
     int _id;
     CellType _state = CellType.None;
-    Tube _tube;
-    Wall _wall;
     CellData _data;
     
     public int Id => _id;
     public CellType State => _state;
-    public Tube Tube => _tube;
-    public Wall Wall => _wall;
     
     public void Initialize(int id, CellData data)
     {
@@ -53,7 +49,6 @@ public class Cell : MonoBehaviour
         switch (type)
         {
             case CellType.Land:
-                _tube = ManagerGame.Instance.PoolController.InstantiateTube(transform.position);
                 break;
         }
     }

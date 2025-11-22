@@ -14,4 +14,7 @@ public class SOGameFeelsSettings : ScriptableObject
 	public float maxDistanceForTap = 20;
 	[Tooltip("Maximum press duration still considered a tap")]
 	public float maxDurationForTap = 0.1f;
+	
+	[Header("Player")]
+	public float PlayerRollTime;
 }
