@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     private SOGameFeelsSettings _settings;
     private float _playerRollTime;
     
+    private Vector2Int _gridPosition;
     public void Initialize()
     {
         _settings = ManagerGame.Instance.GameFeelsSettings;

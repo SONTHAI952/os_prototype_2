@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public enum CellType
 {
@@ -16,31 +17,40 @@ public enum CellType
 public class CellData
 {
     public CellType Type;
-    public Cell cell;
+    public Cell Cell;
 }
 
 public class Cell : MonoBehaviour
 {
     [SerializeField] private Transform baseTransform;
-    [SerializeField] private ParticleSystem woodParticles;
+    [SerializeField] private Land land;
+    [SerializeField] private Tree tree;
+    [SerializeField] private Wood wood;
+    [SerializeField] private FinishLine finishLine;
     
     public const int Ball_To_Score = 5;
     public const float CELL_SIZE_X = 1f;
     public const float CELL_SIZE_Z = 1f;
     public bool isMerging;
+    
 
-    int _id;
-    CellType _state = CellType.None;
+    CellType _type = CellType.None;
     CellData _data;
     
-    public int Id => _id;
-    public CellType State => _state;
+    public CellType Type => _type;
+    public Land Land => land;
+    public Tree Tree => tree;
+    public Wood Wood => wood;
+    public FinishLine FinishLine => finishLine;
     
-    public void Initialize(int id, CellData data)
+    public void Initialize(CellData data)
     {
-        _id = id;
+        land.gameObject.SetActive(false);
+        tree.gameObject.SetActive(false);
+        wood.gameObject.SetActive(false);
+        
         _data = data;
-        _state = _data.Type;
+        _type = _data.Type;
         InitType(_data.Type);
     }
 
@@ -49,12 +59,26 @@ public class Cell : MonoBehaviour
         switch (type)
         {
             case CellType.Land:
+                land.gameObject.SetActive(true);
+                break;
+            case CellType.Tree:
+                tree.gameObject.SetActive(true);
+                break;
+            case CellType.Wood:
+                wood.gameObject.SetActive(true);
+                break;
+            case CellType.Finish:
+                finishLine.gameObject.SetActive(true);
                 break;
         }
     }
 
+    public void SetupFinishLine(bool white)
+    {
+        
+    }
     public bool IsEmpty()
     {
-        return _state == CellType.Land;
+        return _type == CellType.Land;
     }
 }

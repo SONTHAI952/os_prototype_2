@@ -12,26 +12,26 @@ public class BoardController : MonoBehaviour
     [SerializeField] Transform container;
     [SerializeField] Cell tilePrefab;
     [SerializeField] SOLevelConfig levelConfig;
-    [SerializeField] Grid<CellData> grid;
+    [SerializeField] Grid<CellData> grid; 
     
+    private List<Cell> _finishLines = new List<Cell>();
     
     public int Width = 0; 
     public int Length = 0; 
-    public const float CELL_SPACING_X = .5f;
-    public const float CELL_SPACING_Y = .8f;
+    public const float CELL_SPACING_X = 0f;
+    public const float CELL_SPACING_Y = 0f;
     
     private void GenerateGrid()
     {
-        // grid = levelConfig.grid;
+        grid = levelConfig.GetJoinGrid();
         Width = grid.Width;
         Length = grid.Height;
         
-        
         //Căn board về giữa
-        Vector3 containerOffset = Vector3.zero;
-        containerOffset.x = (Cell.CELL_SIZE_X  * .5f) - ((Width * (Cell.CELL_SIZE_X + CELL_SPACING_X) - CELL_SPACING_X) * .5f);
-        containerOffset.z = (Cell.CELL_SIZE_Z  * .5f) - ((Length * (Cell.CELL_SIZE_Z + CELL_SPACING_Y) - CELL_SPACING_Y) * .7f);
-        container.localPosition = containerOffset;
+        // Vector3 containerOffset = Vector3.zero;
+        // containerOffset.x = (Cell.CELL_SIZE_X  * .5f) - ((Width * (Cell.CELL_SIZE_X + CELL_SPACING_X) - CELL_SPACING_X) * .5f);
+        // containerOffset.z = (Cell.CELL_SIZE_Z  * .5f) - ((Length * (Cell.CELL_SIZE_Z + CELL_SPACING_Y) - CELL_SPACING_Y) * .7f);
+        // container.localPosition = containerOffset;
 
         for (int i = 0; i < Width; i++)
         {
@@ -45,23 +45,16 @@ public class BoardController : MonoBehaviour
                 localPos.x = (Cell.CELL_SIZE_X + CELL_SPACING_X)  * i;
                 localPos.z = (Cell.CELL_SIZE_Z + CELL_SPACING_Y) * j;
                 cell.transform.localPosition = localPos;
-                if (i % 2 != 0)
-                    cell.transform.SetLocalPositionZ(cell.transform.localPosition.z - .9f);
                 
-                grid[i, j].cell = cell;
-            }
-        }
-
-        int id = 0;
-        foreach (var c in grid.Cells)
-        {
-            if (c.cell)
-            {
-                c.cell.Initialize(id, c );
-                id++;
+                cell.Initialize(grid[i, j]);
+                grid[i, j].Cell = cell;
+                
+                if(cell.Type == CellType.Finish)
+                    cell.FinishLine.Init(i, j);
             }
         }
     }
+
 
     
     public void Initialize(SOLevelConfig levelConfig)

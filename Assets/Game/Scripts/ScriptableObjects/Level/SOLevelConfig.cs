@@ -20,6 +20,22 @@ public class SOLevelConfig : ScriptableObject
 	public int        pathID;
 	public List<LevelPatternData> patternDatas;
 
+	public Grid<CellData> GetJoinGrid()
+	{
+		var grid = new Grid<CellData>();
+		var table  = ManagerGame.Instance.MapTable;
+		for (int i = 0; i < patternDatas.Count; i++)
+		{
+			var data = patternDatas[i];
+			var group = table.GetPatternByGroup(data.groupType);
+			var pattern = data.id == 0 ? 
+				group.GetRandomPatternByDifficult(data.diffucult).patterns : 
+				group.GetPatternById(data.id).patterns;
+
+			grid.AddExistGrid(pattern); 
+		}
+		return grid;
+	}
 	// [Header("Level Difficulty")]
 	// [Range(0f, 1f)] public float shuffleIntensity = 0.2f;
 

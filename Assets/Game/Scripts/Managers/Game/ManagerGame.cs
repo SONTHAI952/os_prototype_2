@@ -12,7 +12,7 @@ public partial class ManagerGame : Singleton_ManualSpawn<ManagerGame>
 {
     [Header("Settings")] 
     [SerializeField] private SOLevelTable        levelTable;
-    [SerializeField] private SOColorTable        gameColorTable;
+    [SerializeField] private SOMapTable        mapTable;
     [SerializeField] private SOGameFeelsSettings gameFeelsSettings;
     [Header("Controller")]
     [SerializeField] BoardController boardController;
@@ -26,6 +26,7 @@ public partial class ManagerGame : Singleton_ManualSpawn<ManagerGame>
     public BoardController BoardController => boardController;
     public PlayerController PlayerController => playerController;
     public SOGameFeelsSettings GameFeelsSettings => gameFeelsSettings;
+    public SOMapTable MapTable => mapTable;
     public PoolController PoolController => poolController;
     
     protected void Awake()

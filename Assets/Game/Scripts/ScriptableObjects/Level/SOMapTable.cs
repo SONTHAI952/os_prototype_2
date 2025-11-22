@@ -19,12 +19,10 @@ public enum PatternGroupType
 public class SOMapTable : ScriptableObject
 {
 	public List<MapPatternGroup> groups;
-	public Grid<CellData> GetPatternByGroup(PatternGroupType groupType, int difficulty)
+	public MapPatternGroup GetPatternByGroup(PatternGroupType groupType)
 	{
-		Grid<CellData> patterns;
-		
-
-		return null;
+		var group =  groups.Find(g => g.groupType == groupType);
+		return group;
 	}
 }
 
@@ -36,12 +34,13 @@ public class MapPatternGroup
 	
 	public MapPattern GetPatternById(int id)
 	{
-		return null;
+		return maps[id-1];
 	}
 	
 	public MapPattern GetRandomPatternByDifficult(int difficulty)
 	{
-		return null;
+		List<MapPattern> mapByDifficults = maps.FindAll(m => m.diffucult == difficulty);
+		return mapByDifficults.RandomElement();
 	}
 }
 

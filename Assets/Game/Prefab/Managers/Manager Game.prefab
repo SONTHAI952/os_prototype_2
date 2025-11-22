@@ -138,17 +138,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelTable: {fileID: 11400000, guid: 06b6fa83cf8e02f4e97c2e343be0ce16, type: 2}
-  gameColorTable: {fileID: 11400000, guid: 27790c3ed63194faca4e9bae0311ef37, type: 2}
+  mapTable: {fileID: 0}
   gameFeelsSettings: {fileID: 11400000, guid: caa19280bbaf7c9458c14f0fa60bf2f2, type: 2}
   boardController: {fileID: 2394263713341409208}
-  spawnController: {fileID: 3989818597557489436}
+  playerController: {fileID: 0}
   poolController: {fileID: 5405009337037183072}
   RaycastableTap:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   RaycastableDrag:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   offsetY: 1.5
 --- !u!1001 &2123639732889077844
 PrefabInstance:
@@ -276,7 +276,10 @@ PrefabInstance:
       value: Controller Pool
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 9039831798970114945, guid: 4e89e2ecf697cdb41b87a44e8198bea8, type: 3}
+    - {fileID: 1627638040279971388, guid: 4e89e2ecf697cdb41b87a44e8198bea8, type: 3}
+    - {fileID: 8950750721067962031, guid: 4e89e2ecf697cdb41b87a44e8198bea8, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e89e2ecf697cdb41b87a44e8198bea8, type: 3}
@@ -307,6 +310,18 @@ PrefabInstance:
     - target: {fileID: 4969992433415478674, guid: 854e87633fa1ee341ba7bf2ad88adbbd, type: 3}
       propertyPath: m_Name
       value: Controller Spawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 6008864820201289220, guid: 854e87633fa1ee341ba7bf2ad88adbbd, type: 3}
+      propertyPath: 'spawnCells.Array.data[0]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6008864820201289220, guid: 854e87633fa1ee341ba7bf2ad88adbbd, type: 3}
+      propertyPath: 'spawnCells.Array.data[1]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6008864820201289220, guid: 854e87633fa1ee341ba7bf2ad88adbbd, type: 3}
+      propertyPath: 'spawnCells.Array.data[2]'
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9040694383178295237, guid: 854e87633fa1ee341ba7bf2ad88adbbd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -349,7 +364,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3403997478711273190, guid: 854e87633fa1ee341ba7bf2ad88adbbd, type: 3}
+    - {fileID: 2151069023555602047, guid: 854e87633fa1ee341ba7bf2ad88adbbd, type: 3}
+    - {fileID: 7165339490738019261, guid: 854e87633fa1ee341ba7bf2ad88adbbd, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 854e87633fa1ee341ba7bf2ad88adbbd, type: 3}
@@ -358,14 +376,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9040694383178295237, guid: 854e87633fa1ee341ba7bf2ad88adbbd, type: 3}
   m_PrefabInstance: {fileID: 7223044102774405400}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3989818597557489436 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6008864820201289220, guid: 854e87633fa1ee341ba7bf2ad88adbbd, type: 3}
-  m_PrefabInstance: {fileID: 7223044102774405400}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a0a3ee06f9c3a747b3f20b3aa79290f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

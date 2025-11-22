@@ -97,6 +97,14 @@ namespace ZeroX.Variables
             }
         }
 
+        public void AddExistGrid(Grid<TCell> grid)
+        {
+            for (int i = 0; i < grid.listRow.Count; i++)
+            {
+                listRow.Add(grid.listRow[i]);
+            }
+        }
+
         public void InsertRow(int gPosY)
         {
             Row row = new Row(Width);
