@@ -39,7 +39,8 @@ public partial class ManagerGame //_Core
 
 	private void Update_Core()
 	{
-		CheckCountdown();
+		if (playerController)
+			playerController.CheckMove();
 	}
 	
 	public async void TrackPlayerAssignment(Task task, Action onComplete = null)
@@ -71,16 +72,20 @@ public partial class ManagerGame //_Core
 	Plane plane = new Plane(Vector3.up, Vector3.zero);
 	private void HandleRaycastDragMechanism(Vector2 mousePosition)
 	{
-		
+		if (playerController)
+			playerController.PendingNextMove(true);
+		Debug.LogError("pending move mechanism");
 	}
 
 	private void HandleSwipeMechanism(int directionIndex)
 	{
-		PlayerController.Move(directionIndex);
+		PlayerController.MoveByInput(directionIndex);
 	}
 	
 	private void HandleRelease()
 	{
+		if (playerController)
+			playerController.PendingNextMove(false);
 		
 		ClearData();
 	}
@@ -157,27 +162,6 @@ public partial class ManagerGame //_Core
 	{
 		_canCountDown = true;
 		_countdowner.StartCd(1);
-	}
-	
-	private void CheckCountdown()
-	{
-		if(!_canCountDown || !_active) 
-			return;
-
-		if (_countdowner.IsCd())
-		{
-			_countdowner.Cd();
-			if (_countdowner.IsOut())
-			{
-				_currentSecond--;
-				ManagerUI.Instance.UpdateTimer(_currentSecond);
-		
-				if(_currentSecond == 0)
-					GameEvents.OnOutOfTime.Emit(GameResult.Lose);
-				else
-					_countdowner.StartCd(1);
-			}
-		}
 	}
 
 	public void ActiveGameStatus(bool value)

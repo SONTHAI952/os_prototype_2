@@ -9,8 +9,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform cameraPivot;
     
     private Player _player;
-
     private float _smoothSpeed;
+    private bool _pending = false;
     
     
     public void Initialize()
@@ -20,9 +20,17 @@ public class PlayerController : MonoBehaviour
         _player.Initialize();
     }
 
-    public void Move(int directionIndex)
+    public void CheckMove()
     {
-        _player.Move(directionIndex);
+        Debug.LogError("Can Move ="+CanMove());
+        if(!CanMove())
+            return;
+        
+        _player.Move(0);
+    }
+    public void MoveByInput(int directionIndex)
+    {
+        _player.OnDoneMove += () => _player.Move(directionIndex);
     }
     
     void LateUpdate()
@@ -42,5 +50,17 @@ public class PlayerController : MonoBehaviour
             desiredPosition,
             _smoothSpeed * Time.deltaTime
         );
+    }
+
+    private bool CanMove()
+    {
+        if (_player != null && _player.Active && !_player.IsRolling() && !_pending)
+            return true;
+        return false;
+    }
+
+    public void PendingNextMove(bool value)
+    {
+        _pending = value;
     }
 }

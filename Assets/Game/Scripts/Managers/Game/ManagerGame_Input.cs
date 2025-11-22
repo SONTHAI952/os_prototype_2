@@ -63,8 +63,9 @@ public partial class ManagerGame //_Input
 				//------------------------------------------------------------------------------------------------------
 				case TouchPhase.Moved:
 					// touch0LastPosition = touch.position;
-					//
-					// OnDrag(touch0LastPosition);
+					
+					OnDrag(touch0LastPosition);
+					
 					// if (touch.deltaPosition != Vector2.zero && isTouching)
 					// {
 					// 	if (touch.deltaPosition.magnitude > gameFeelsSettings.swipeThreadshole) 
@@ -153,9 +154,9 @@ public partial class ManagerGame //_Input
 			{
 				// var delta = mousePosition - touch0LastPosition;
 				// touch0LastPosition = mousePosition;
-				//
-				// OnDrag(touch0LastPosition);
-				//
+				
+				OnDrag(touch0LastPosition);
+				
 				// if (delta != Vector2.zero && delta.magnitude > gameFeelsSettings.swipeThreadshole) 
 				// 	OnSwipe(delta);
 			}
