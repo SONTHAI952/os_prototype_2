@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "GameFeelsSettings", menuName = "Scriptable Objects/GameFeelsSettings")]
 public class SOGameFeelsSettings : ScriptableObject
@@ -17,4 +18,5 @@ public class SOGameFeelsSettings : ScriptableObject
 	
 	[Header("Player")]
 	public float PlayerRollTime;
+	public float CameraSmoothSpeed;
 }

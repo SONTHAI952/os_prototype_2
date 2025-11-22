@@ -62,7 +62,7 @@ public partial class ManagerGame //_Level
 			
 			// poolController.Initialize();
 			boardController.Initialize(currentLevelConfig);
-			// playerController.Initialize();
+			playerController.Initialize();
 			
 			isInitialized = true;
 			TrackingGameResult();

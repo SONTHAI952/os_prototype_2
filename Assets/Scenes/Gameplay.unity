@@ -593,10 +593,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4286047826992954745, guid: bbb6011a6bda01d41879d416087f14c3, type: 3}
-      propertyPath: mapTable
+    - target: {fileID: 13994964452014693, guid: bbb6011a6bda01d41879d416087f14c3, type: 3}
+      propertyPath: prefab
       value: 
-      objectReference: {fileID: 11400000, guid: 756fb8c853ab7c248919698ee9bfb4f3, type: 2}
+      objectReference: {fileID: 1937244009887204775, guid: 750d932f5d6772345a804b658ba558b9, type: 3}
+    - target: {fileID: 13994964452014693, guid: bbb6011a6bda01d41879d416087f14c3, type: 3}
+      propertyPath: cameraPivot
+      value: 
+      objectReference: {fileID: 522742727}
     - target: {fileID: 4850232380969638614, guid: bbb6011a6bda01d41879d416087f14c3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -16,3 +16,5 @@ MonoBehaviour:
   swipeThreadshole: 20
   maxDistanceForTap: 20
   maxDurationForTap: 0.1
+  PlayerRollTime: 0.5
+  CameraSmoothSpeed: 10
