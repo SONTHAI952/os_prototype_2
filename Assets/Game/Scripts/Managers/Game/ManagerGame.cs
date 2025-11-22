@@ -17,7 +17,6 @@ public partial class ManagerGame : Singleton_ManualSpawn<ManagerGame>
     [Header("Controller")]
     [SerializeField] BoardController boardController;
     [SerializeField] PlayerController playerController;
-    [SerializeField] PoolController poolController;
     
     private Camera mainCamera;
     private bool   isPlayable;
@@ -27,7 +26,6 @@ public partial class ManagerGame : Singleton_ManualSpawn<ManagerGame>
     public PlayerController PlayerController => playerController;
     public SOGameFeelsSettings GameFeelsSettings => gameFeelsSettings;
     public SOMapTable MapTable => mapTable;
-    public PoolController PoolController => poolController;
     
     protected void Awake()
     {

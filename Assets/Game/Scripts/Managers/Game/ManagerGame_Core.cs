@@ -42,19 +42,11 @@ public partial class ManagerGame //_Core
 		CheckCountdown();
 	}
 	
-	public async void TrackBulletAssignment(Task task, Action onComplete = null)
+	public async void TrackPlayerAssignment(Task task, Action onComplete = null)
 	{
 		_bulletRunningAssignments.Add(task);
 		await task;
 		_bulletRunningAssignments.Remove(task);
-		onComplete?.Invoke();
-	}
-	
-	public async void TrackTurretAssignment(Task task, Action onComplete = null)
-	{
-		_turretRunningAssignments.Add(task);
-		await task;
-		_turretRunningAssignments.Remove(task);
 		onComplete?.Invoke();
 	}
 	
@@ -81,8 +73,13 @@ public partial class ManagerGame //_Core
 	{
 		
 	}
+
+	private void HandleSwipeMechanism(int directionIndex)
+	{
+		PlayerController.Move(directionIndex);
+	}
 	
-	private void HandlePutDownTube()
+	private void HandleRelease()
 	{
 		
 		ClearData();

@@ -54,9 +54,13 @@ public class Player : MonoBehaviour
     Tween _downTween;
     Tween _moveTween;
     Tween _rotateTween;
+    
     [ContextMenu("Move")]
     public void Move(float id)
     {
+        if(IsRolling())
+            return;
+        
         float directionIndex = id;
         StartCoroutine(TimeLine());
 
@@ -83,6 +87,12 @@ public class Player : MonoBehaviour
         }
     }
 
+    private bool IsRolling()
+    {
+        if(_upTween != null || _downTween != null || _moveTween != null || _rotateTween != null)
+            return true;
+        return false;
+    }
     private void OnCollisionEnter(Collision other)
     {
         

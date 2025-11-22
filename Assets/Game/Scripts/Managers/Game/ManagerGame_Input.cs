@@ -62,13 +62,14 @@ public partial class ManagerGame //_Input
 					break;
 				//------------------------------------------------------------------------------------------------------
 				case TouchPhase.Moved:
-					touch0LastPosition = touch.position;
-
-					OnDrag(touch0LastPosition);
-					if (touch.deltaPosition != Vector2.zero && isTouching)
-					{
-						if (touch.deltaPosition.magnitude > gameFeelsSettings.swipeThreadshole) OnSwipe(touch.deltaPosition);
-					}
+					// touch0LastPosition = touch.position;
+					//
+					// OnDrag(touch0LastPosition);
+					// if (touch.deltaPosition != Vector2.zero && isTouching)
+					// {
+					// 	if (touch.deltaPosition.magnitude > gameFeelsSettings.swipeThreadshole) 
+					// 		OnSwipe(touch.deltaPosition);
+					// }
 					
 					break;
 				//------------------------------------------------------------------------------------------------------
@@ -80,6 +81,15 @@ public partial class ManagerGame //_Input
 						if (Time.time - touch0StartTime <= gameFeelsSettings.maxDurationForTap && Vector2.Distance(touch.position, touch0StartPosition) <= gameFeelsSettings.maxDistanceForTap)
 						{
 							OnClick(touch.position);
+						}
+						
+						touch0LastPosition = touch.position;
+
+						OnDrag(touch0LastPosition);
+						if (touch.deltaPosition != Vector2.zero && isTouching)
+						{
+							if (touch.deltaPosition.magnitude > gameFeelsSettings.swipeThreadshole) 
+								OnSwipe(touch.deltaPosition);
 						}
 						
 						isTouching = false;
@@ -141,13 +151,13 @@ public partial class ManagerGame //_Input
 		{
 			if (isTouching)
 			{
-				var delta = mousePosition - touch0LastPosition;
-				touch0LastPosition = mousePosition;
-				
-				OnDrag(touch0LastPosition);
-				
-				if (delta != Vector2.zero && delta.magnitude > gameFeelsSettings.swipeThreadshole) 
-					OnSwipe(delta);
+				// var delta = mousePosition - touch0LastPosition;
+				// touch0LastPosition = mousePosition;
+				//
+				// OnDrag(touch0LastPosition);
+				//
+				// if (delta != Vector2.zero && delta.magnitude > gameFeelsSettings.swipeThreadshole) 
+				// 	OnSwipe(delta);
 			}
 		}
 		
@@ -159,6 +169,14 @@ public partial class ManagerGame //_Input
 				{
 					OnClick(mousePosition);
 				}
+				
+				var delta = mousePosition - touch0LastPosition;
+				touch0LastPosition = mousePosition;
+				
+				OnDrag(touch0LastPosition);
+				
+				if (delta != Vector2.zero && delta.magnitude > gameFeelsSettings.swipeThreadshole) 
+					OnSwipe(delta);
 				
 				isTouching = false;
 			}
@@ -201,9 +219,25 @@ public partial class ManagerGame //_Input
 	/// 
 	/// </summary>
 	/// <param name="deltaPosition"></param>
-	private void OnSwipe(Vector2 deltaPosition)
+	private void OnSwipe(Vector2 delta)
 	{
+		// Nếu vuốt theo trục Y nhiều hơn trục X → bỏ qua
+		if (Mathf.Abs(delta.y) > Mathf.Abs(delta.x))
+			return;
+
+		// Detect trái / phải
+		if (delta.x > 0)
+		{
+			Debug.Log("Swipe Right");
+			HandleSwipeMechanism(2);
+		}
+		else
+		{
+			Debug.Log("Swipe Left");
+			HandleSwipeMechanism(1);
+		}
 	}
+
 
 	private void OnDrag(Vector2 mousePosition)
 	{
@@ -225,7 +259,7 @@ public partial class ManagerGame //_Input
 	/// </summary>
 	private void OnRelease()
 	{
-		HandlePutDownTube();
+		HandleRelease();
 	}
 	
 	

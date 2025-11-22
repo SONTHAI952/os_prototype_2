@@ -17,7 +17,14 @@ public class PlayerController : MonoBehaviour
     {
         _smoothSpeed = ManagerGame.Instance.GameFeelsSettings.CameraSmoothSpeed;
         _player = Instantiate(prefab);
+        _player.Initialize();
     }
+
+    public void Move(int directionIndex)
+    {
+        _player.Move(directionIndex);
+    }
+    
     void LateUpdate()
     {
         if (_player == null) 
