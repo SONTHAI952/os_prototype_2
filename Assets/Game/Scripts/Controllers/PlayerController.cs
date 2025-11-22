@@ -30,7 +30,10 @@ public class PlayerController : MonoBehaviour
     }
     public void MoveByInput(int directionIndex)
     {
-        _player.OnDoneMove += () => _player.Move(directionIndex);
+        if (_player.IsRolling())
+            _player.OnDoneMove += () => _player.Move(directionIndex);
+        else
+            _player.Move(directionIndex);
     }
     
     void LateUpdate()
