@@ -87,8 +87,10 @@ public class BoardController : MonoBehaviour
 
     #region Querry
 
-    public CellData GetNextCell(Vector2Int position, int directionIndex)
+    public CellData GetCell(Vector2Int position, int directionIndex)
     {
+        if (position.x < 0 || position.x >= grid.Width || position.y < 0 || position.y >= grid.Height) 
+            return null;
         return grid[position.x  , position.y];
     }
 

@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     {
         _smoothSpeed = ManagerGame.Instance.GameFeelsSettings.CameraSmoothSpeed;
         var spawnPosIndex = ManagerGame.Instance.BoardController.GetSpawnCell();
+        if(_player)
+            Destroy(_player.gameObject);
         _player = Instantiate(prefab);
         _player.Initialize(new Vector2Int(1,1));
         _player.transform.position = spawnPosIndex.Cell.transform.position;
@@ -35,7 +37,6 @@ public class PlayerController : MonoBehaviour
     { 
         if (_player == null || !_player.Active || !_active)
             return;
-        
         if (_player.IsRolling())
             _player.OnDoneMove += () => _player.Move(directionIndex);
         else

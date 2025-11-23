@@ -51,6 +51,17 @@ namespace ZeroX.Variables
             set => listRow[gPosY].listCell[gPosX] = value;
         }
         
+        private TCell CloneCell(TCell cell)
+        {
+            if (cell == null) return default;
+
+            if (cell is ICloneable cloneable)
+                return (TCell)cloneable.Clone();
+
+            // Nếu không có ICloneable thì tự clone
+            return JsonUtility.FromJson<TCell>(JsonUtility.ToJson(cell));
+        }
+
         public IEnumerable<Row> Rows => listRow;
 
         public IEnumerable<TCell> Cells
@@ -99,11 +110,18 @@ namespace ZeroX.Variables
 
         public void AddExistGrid(Grid<TCell> grid)
         {
-            for (int i = 0; i < grid.listRow.Count; i++)
+            foreach (var srcRow in grid.Rows)
             {
-                listRow.Add(grid.listRow[i]);
+                Row newRow = new Row();
+                foreach (var cell in srcRow.listCell)
+                {
+                    // Nếu cell là class thì cần clone nữa
+                    newRow.listCell.Add(CloneCell(cell));
+                }
+                listRow.Add(newRow);
             }
         }
+
 
         public void InsertRow(int gPosY)
         {

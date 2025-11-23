@@ -7,7 +7,7 @@ public partial class ManagerGame //_Level
 {
 	private int _targetAmount;
 	private int _currentAmount;
-	private int _currentSecond = 0;
+	private int _currentSecond;
 	private int _time;
 	private int width, height;
 	private bool isInitialized = false;
@@ -49,8 +49,8 @@ public partial class ManagerGame //_Level
 		CancelAllRunningTasks();
 		StopAllControllers();
 		SetGameResult(GameResult.None);
-		// ManagerUI.Instance.CloseAllPopup();
-
+		ManagerUI.Instance.CloseAllPopup();
+		_currentSecond = 4;
 		int totalLevels = levelTable.totalLevelCount;
 		int realLevelID = levelID > totalLevels ? ((levelID - 6) % (totalLevels - 5)) + 6 : levelID;
 		currentLevelConfig = Instantiate(levelTable.GetLevelConfig(realLevelID));
@@ -62,8 +62,9 @@ public partial class ManagerGame //_Level
 			boardController.Initialize(currentLevelConfig);
 			playerController.Initialize();
 			
+			ManagerUI.Instance.Init();
+			
 			isInitialized = true;
-			TrackingGameResult();
 			
 			GameEvents.OnLevelLoaded.Emit();
 		}

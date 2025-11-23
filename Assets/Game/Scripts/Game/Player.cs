@@ -60,12 +60,13 @@ public class Player : MonoBehaviour
     }
     Vector3 GetNextPosition(Vector2Int position,int directionIndex)
     {
-        var cell = _boardController.GetNextCell(position, directionIndex);
+        var cell = _boardController.GetCell(position, directionIndex);
         if (cell == null || cell.Type == CellType.None)
         {
             _active = false;
             OnDoneMove = null;
             OnDoneMove += () => Fall();
+            
             return GetNextPosition(directionIndex);
         }
         else
@@ -97,7 +98,7 @@ public class Player : MonoBehaviour
     Tween _moveTween;
     Tween _rotateTween;
     
-    [ContextMenu("Move")]
+    
     public void Move(int id)
     {
         if(IsRolling())
@@ -110,8 +111,11 @@ public class Player : MonoBehaviour
         {
             Vector3 rotateAxis = GetRotateAxis(directionIndex);
             Vector2Int nextGridPosition = GetNextGridPosition(directionIndex);
+            // Debug.LogError("nextGridPosition "+nextGridPosition);
             Vector3 nextPosition = GetNextPosition(nextGridPosition,directionIndex);
+            // Debug.LogError("next Position "+nextPosition);
             var angle = directionIndex == 2 ? -90 : 90; 
+            // Debug.LogError("Move Distance: "+(nextPosition - transform.position).magnitude + " id "+directionIndex);
             
             _moveTween = transform.DOMove(nextPosition,_playerRollTime).SetEase(Ease.Linear);
             
@@ -128,7 +132,9 @@ public class Player : MonoBehaviour
             ClearAnimation();
             
             OnDoneMove?.Invoke();
-            OnDoneMove = null;
+            if(Active)
+                OnDoneMove = null;
+            
         }
     }
 
@@ -155,6 +161,7 @@ public class Player : MonoBehaviour
         ClearAnimation();
         baseModel.gameObject.SetActive(false);
         _active = false;
+        OnDoneMove = null;
         GameEvents.OnLose.Emit(GameResult.Lose);
     }
 

@@ -26,10 +26,7 @@ public class Popup
 public class ManagerUI : Singleton_ManualSpawn<ManagerUI>
 {
     #region Inspector Variables
-    
-    [SerializeField] private Image progressFill;
-    [SerializeField] private TextMeshProUGUI txtProgress;
-
+    [SerializeField] private GameObject countDownPanel;
     [SerializeField] private TextMeshProUGUI txtTimer;
     
     [SerializeField] private List<Popup> PopupList;
@@ -45,11 +42,22 @@ public class ManagerUI : Singleton_ManualSpawn<ManagerUI>
     #endregion
     
     #region Unity Methods
-    
+
+    protected override void Awake()
+    {
+        GameEvents.OnStartPlaying.SubscribeOnceUntilDestroy(OnStartPlaying,this);
+        base.Awake();
+    }
+
     #endregion
     
     #region Public Methods
-    
+
+    public void Init()
+    {
+        countDownPanel.gameObject.SetActive(true);
+        ManagerGame.Instance.StartCoundown();
+    }
     public void OpenPopup(PopupType popupType)
     {
         PopupList?.ForEach(popup => popup.popupPanel.SetActive(popup.popupType == popupType));
@@ -80,18 +88,17 @@ public class ManagerUI : Singleton_ManualSpawn<ManagerUI>
         }
         return selectedPopup;
     }
-    
-    public void UpdateProgress(float progress)
-    {
-        txtProgress.text = $"{(int)(progress*100f)}%";
-        progressFill.DOFillAmount(progress, 0.1f).SetEase(Ease.Linear);
-    }
 
     public void UpdateTimer(int seconds)
     {
-        var time = Countdowner.TimeFormat3(seconds);
-        txtTimer.text = $"{time}";
+        txtTimer.text = seconds == 1 ? "GO" :$"{seconds-1}";
     }
+
+    private void OnStartPlaying()
+    {
+        countDownPanel.gameObject.SetActive(false);
+    }
+    
     #endregion
     
     #region Protected Methods

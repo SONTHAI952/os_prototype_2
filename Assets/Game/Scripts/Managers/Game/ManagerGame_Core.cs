@@ -29,7 +29,7 @@ public partial class ManagerGame //_Core
 		
 		GameEvents.OnLose.SubscribeUntilDestroy(r=> SetGameResult(r), this);
 		GameEvents.OnWin.SubscribeUntilDestroy(r=> SetGameResult(r), this);
-		GameEvents.OnStartPlaying.SubscribeOnceUntilDestroy(StartCoundown,this);
+		GameEvents.OnStartPlaying.SubscribeOnceUntilDestroy(() => OnStartPlaying(), this);
 	}
 	
 	private void Start_Core()
@@ -39,8 +39,10 @@ public partial class ManagerGame //_Core
 
 	private void Update_Core()
 	{
-		if (playerController)
-			playerController.CheckMove();
+		if (PlayerController && _active)
+			PlayerController.CheckMove();
+		
+		CheckCountdown();
 	}
 	
 	public async void TrackPlayerAssignment(Task task, Action onComplete = null)
@@ -64,21 +66,20 @@ public partial class ManagerGame //_Core
 	
 	private async void HandleRaycastMechanism(Vector2 position)
 	{
-		if (!_canCountDown)
-			GameEvents.OnStartPlaying.Emit();
 		
 	}
 
 	Plane plane = new Plane(Vector3.up, Vector3.zero);
 	private void HandleRaycastDragMechanism(Vector2 mousePosition)
 	{
-		if (playerController)
-			playerController.PendingNextMove(true);
+		if (PlayerController && _active)
+			PlayerController.PendingNextMove(true);
 	}
 
 	private void HandleSwipeMechanism(int directionIndex)
 	{
-		PlayerController.MoveByInput(directionIndex);
+		if(PlayerController && _active)
+			PlayerController.MoveByInput(directionIndex);
 	}
 	
 	private void HandleRelease()
@@ -91,47 +92,15 @@ public partial class ManagerGame //_Core
 	
 	public void ClearData()
 	{
-		
 		// isDowning = false;
 	}
-	
-	private bool isTrackingGameResult;
-	private void TrackingGameResult()
-	{
-		if (isTrackingGameResult) return;
-		// trackingGameResultCoroutine.StopIfNotNull(this);
-		// trackingGameResultCoroutine = StartCoroutine(IETrackingGameResult());
-	}
-	
-	private Coroutine trackingGameResultCoroutine;
-	// private IEnumerator IETrackingGameResult()
-	// {
-	// 	isTrackingGameResult = true;
-	// 	while (isTrackingGameResult)
-	// 	{
-	// 		if (boardController.isAllCellCleared && turretController.isAllTurretCleared)
-	// 		{
-	// 			SetGameResult(GameResult.Win);
-	// 			isTrackingGameResult = false;
-	// 			yield break;
-	// 		}
-	// 		
-	// 		if (boardController.isCellHeadReachedEndPoint && !isAnyAssignmentRunning)
-	// 		{
-	// 			SetGameResult(GameResult.Lose);
-	// 			isTrackingGameResult = false;
-	// 			yield break;
-	// 		}
-	// 		
-	// 		yield return null;
-	// 	}
-	// }
 	
 	private void SetGameResult(GameResult result)
 	{
 		if(_gameResult != GameResult.None)
 			return;
 		
+		ActiveGameStatus(false);
 		StopAllControllers();
 		_gameResult = result;
 		StartCoroutine(Timeline());
@@ -162,14 +131,39 @@ public partial class ManagerGame //_Core
 
 	private bool _canCountDown = false;
 	Countdowner _countdowner = new Countdowner();
-	void StartCoundown()
+	public void StartCoundown()
 	{
 		_canCountDown = true;
 		_countdowner.StartCd(1);
+	}
+	private void CheckCountdown()
+	{
+		if(!_canCountDown) 
+			return;
+		if (_countdowner.IsCd())
+		{
+			_countdowner.Cd();
+			if (_countdowner.IsOut())
+			{
+				_currentSecond--;
+				ManagerUI.Instance.UpdateTimer(_currentSecond);
+		
+				if(_currentSecond == 0)
+					GameEvents.OnStartPlaying.Emit();
+				else
+					_countdowner.StartCd(1);
+			}
+		}
 	}
 
 	public void ActiveGameStatus(bool value)
 	{
 		_active = value;
+	}
+
+	private void OnStartPlaying()
+	{
+		ActiveGameStatus(true);
+		_canCountDown = false;
 	}
 }

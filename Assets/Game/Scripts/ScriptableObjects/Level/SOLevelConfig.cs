@@ -27,9 +27,11 @@ public class SOLevelConfig : ScriptableObject
 		for (int i = 0; i < patternDatas.Count; i++)
 		{
 			var data = patternDatas[i];
-			var group = table.GetPatternByGroup(data.groupType);
+			
+			var group = table.GetGroup(data.groupType);
+			
 			var pattern = data.id == 0 ? 
-				group.GetRandomPatternByDifficult(data.diffucult).patterns : 
+				group.GetRandomPatternByDifficult(data.groupType,data.diffucult).patterns : 
 				group.GetPatternById(data.id).patterns;
 
 			grid.AddExistGrid(pattern); 
