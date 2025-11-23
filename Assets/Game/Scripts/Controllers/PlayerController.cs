@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour
     {
         _smoothSpeed = ManagerGame.Instance.GameFeelsSettings.CameraSmoothSpeed;
         var spawnPosIndex = ManagerGame.Instance.BoardController.GetSpawnCell();
-        Debug.LogError("spawnPosIndex" + spawnPosIndex.Cell.transform.position);
         _player = Instantiate(prefab);
         _player.Initialize(new Vector2Int(1,1));
         _player.transform.position = spawnPosIndex.Cell.transform.position;
