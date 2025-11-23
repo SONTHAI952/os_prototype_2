@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private Player _player;
     private float _smoothSpeed;
     private bool _pending = false;
+    private bool _active = false;
     
     
     public void Initialize()
@@ -18,18 +19,21 @@ public class PlayerController : MonoBehaviour
         _smoothSpeed = ManagerGame.Instance.GameFeelsSettings.CameraSmoothSpeed;
         _player = Instantiate(prefab);
         _player.Initialize();
+        _active = true;
     }
 
     public void CheckMove()
     {
-        Debug.LogError("Can Move ="+CanMove());
         if(!CanMove())
             return;
         
         _player.Move(0);
     }
     public void MoveByInput(int directionIndex)
-    {
+    { 
+        if (_player == null || !_player.Active || !_active)
+            return;
+        
         if (_player.IsRolling())
             _player.OnDoneMove += () => _player.Move(directionIndex);
         else
@@ -57,7 +61,7 @@ public class PlayerController : MonoBehaviour
 
     private bool CanMove()
     {
-        if (_player != null && _player.Active && !_player.IsRolling() && !_pending)
+        if (_player != null && _player.Active && !_player.IsRolling() && !_pending && _active)
             return true;
         return false;
     }
@@ -65,5 +69,10 @@ public class PlayerController : MonoBehaviour
     public void PendingNextMove(bool value)
     {
         _pending = value;
+    }
+
+    public void Stop()
+    {
+        _active = false;
     }
 }

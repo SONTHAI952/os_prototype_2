@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
+using CS;
 using UnityEngine;
 
 public partial class ManagerGame //_Core
@@ -26,9 +27,8 @@ public partial class ManagerGame //_Core
 	{
 		_cts = new CancellationTokenSource();
 		
-		GameEvents.OnOutOfSpace.SubscribeUntilDestroy(r=> SetGameResult(r), this);
-		GameEvents.OnOutOfTime.SubscribeUntilDestroy(r=> SetGameResult(r), this);
-		GameEvents.OnTargetComplete.SubscribeUntilDestroy(r=> SetGameResult(r), this);
+		GameEvents.OnLose.SubscribeUntilDestroy(r=> SetGameResult(r), this);
+		GameEvents.OnWin.SubscribeUntilDestroy(r=> SetGameResult(r), this);
 		GameEvents.OnStartPlaying.SubscribeOnceUntilDestroy(StartCoundown,this);
 	}
 	
@@ -74,7 +74,6 @@ public partial class ManagerGame //_Core
 	{
 		if (playerController)
 			playerController.PendingNextMove(true);
-		Debug.LogError("pending move mechanism");
 	}
 
 	private void HandleSwipeMechanism(int directionIndex)
@@ -133,27 +132,32 @@ public partial class ManagerGame //_Core
 		if(_gameResult != GameResult.None)
 			return;
 		
+		StopAllControllers();
 		_gameResult = result;
-		switch (_gameResult)
+		StartCoroutine(Timeline());
+
+		IEnumerator Timeline()
 		{
-			case GameResult.None: break;
-			case GameResult.Win:
-				ManagerUI.Instance.OpenPopup(PopupType.Victory);
-				ManagerSounds.Instance.PlaySound(SoundType.Victory);
-				StopAllControllers();
-				break;
-			case GameResult.Lose:
-				ManagerUI.Instance.OpenPopup(PopupType.Lose);
-				ManagerSounds.Instance.PlaySound(SoundType.Lose);
-				StopAllControllers();
-				break;
-			default: throw new ArgumentOutOfRangeException();
+			yield return Yielder.Wait(1);
+			switch (_gameResult)
+			{
+				case GameResult.None: break;
+				case GameResult.Win:
+					ManagerUI.Instance.OpenPopup(PopupType.Victory);
+					// ManagerSounds.Instance.PlaySound(SoundType.Victory);
+					break;
+				case GameResult.Lose:
+					ManagerUI.Instance.OpenPopup(PopupType.Lose);
+					// ManagerSounds.Instance.PlaySound(SoundType.Lose);
+					break;
+				default: throw new ArgumentOutOfRangeException();
+			}
 		}
 	}
 	
 	private void StopAllControllers()
 	{
-		
+		playerController.Stop();
 	}
 
 	private bool _canCountDown = false;

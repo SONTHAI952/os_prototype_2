@@ -100,14 +100,30 @@ public class Player : MonoBehaviour
             return true;
         return false;
     }
-    private void OnCollisionEnter(Collision other)
+
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if(other.CompareTag("Obstacle"))
+            Damage();
+        else if(other.CompareTag("Finish"))
+        {
+            GameEvents.OnWin.Emit(GameResult.Win);
+        }
+
+    }
+
+    public void Damage()
+    {
+        ClearAnimation();
+        baseModel.gameObject.SetActive(false);
+        _active = false;
+        GameEvents.OnLose.Emit(GameResult.Lose);
     }
 
     public void Fall()
     {
-        
+        body.isKinematic = false;
+        _active = false;
     }
 
     void ClearAnimation()

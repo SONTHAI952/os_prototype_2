@@ -229,12 +229,10 @@ public partial class ManagerGame //_Input
 		// Detect trái / phải
 		if (delta.x > 0)
 		{
-			Debug.Log("Swipe Right");
 			HandleSwipeMechanism(2);
 		}
 		else
 		{
-			Debug.Log("Swipe Left");
 			HandleSwipeMechanism(1);
 		}
 	}

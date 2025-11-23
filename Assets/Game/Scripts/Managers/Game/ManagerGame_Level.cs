@@ -22,7 +22,6 @@ public partial class ManagerGame //_Level
 
 	private void Awake_Level()
 	{
-		GameEvents.OnBallCollect.SubscribeUntilDestroy(OnBallCollecte, this);
 	}
 	
 	private void Start_Level()
@@ -60,7 +59,6 @@ public partial class ManagerGame //_Level
 		{
 			_currentAmount = 0;
 			
-			// poolController.Initialize();
 			boardController.Initialize(currentLevelConfig);
 			playerController.Initialize();
 			
@@ -71,16 +69,4 @@ public partial class ManagerGame //_Level
 		}
 	}
 
-	void OnBallCollecte()
-	{
-		_currentAmount++;
-		if (_currentAmount >= _targetAmount)
-		{
-			_currentAmount = _targetAmount;
-			GameEvents.OnTargetComplete.Emit(GameResult.Win);
-		}
-		float percentage = (float)_currentAmount / (float)_targetAmount;
-		ManagerUI.Instance.UpdateProgress(percentage);
-	}
-	
 }
