@@ -87,6 +87,16 @@ public class BoardController : MonoBehaviour
 
     #region Querry
 
+    public CellData GetNextCell(Vector2Int position, int directionIndex)
+    {
+        return grid[position.x  , position.y];
+    }
+
+    public CellData GetSpawnCell()
+    {
+        return grid[1, 1];
+    }
+    
     // public Cell GetCell(int x, int y)
     // {
     //     if (x < 0 || x >= m_Grid.GetLength(0) || y < 0 || y >= m_Grid.GetLength(1)) return null;
@@ -99,10 +109,8 @@ public class BoardController : MonoBehaviour
     //     else return m_Grid[position.x, position.y];
     // }
 
-    // public List<Cell> GetNeigbors()
-    // {
-    //     
-    // }
+    
+    
 
     #endregion
 }

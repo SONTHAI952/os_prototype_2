@@ -17,15 +17,18 @@ public class Player : MonoBehaviour
 
 
     private SOGameFeelsSettings _settings;
+    private BoardController _boardController;
     private float _playerRollTime;
     private Vector2Int _gridPosition;
     
     private bool _active = false;
     public bool Active => _active;
-    public void Initialize()
+    public void Initialize(Vector2Int gridPosition)
     {
         _settings = ManagerGame.Instance.GameFeelsSettings;
+        _boardController = ManagerGame.Instance.BoardController;
         _playerRollTime = _settings.PlayerRollTime;
+        _gridPosition = gridPosition;
         _active = true;
     }
     Vector3 GetRotateAxis(float directionIndex)
@@ -37,6 +40,40 @@ public class Player : MonoBehaviour
 
     }
 
+    Vector2Int GetNextGridPosition(int directionIndex)
+    {
+        var posIndex = _gridPosition;
+        switch (directionIndex)
+        {
+            case 0:
+                posIndex.y += 1;
+                break;
+            case 1:
+                posIndex.x -= 1;
+                break;
+            case 2:
+                posIndex.x += 1;
+                break;
+        }
+
+        return posIndex;
+    }
+    Vector3 GetNextPosition(Vector2Int position,int directionIndex)
+    {
+        var cell = _boardController.GetNextCell(position, directionIndex);
+        if (cell == null || cell.Type == CellType.None)
+        {
+            _active = false;
+            OnDoneMove = null;
+            OnDoneMove += () => Fall();
+            return GetNextPosition(directionIndex);
+        }
+        else
+        {
+            return cell.Cell.transform.position;
+        }
+    }
+    
     Vector3 GetNextPosition(float directionIndex)
     {
         var pos = transform.position;
@@ -61,19 +98,19 @@ public class Player : MonoBehaviour
     Tween _rotateTween;
     
     [ContextMenu("Move")]
-    public void Move(float id)
+    public void Move(int id)
     {
         if(IsRolling())
             return;
         
-        float directionIndex = id;
+        int directionIndex = id;
         StartCoroutine(TimeLine());
 
         IEnumerator TimeLine()
         {
-            // transform.position = t1.position; 
             Vector3 rotateAxis = GetRotateAxis(directionIndex);
-            Vector3 nextPosition = GetNextPosition(directionIndex);
+            Vector2Int nextGridPosition = GetNextGridPosition(directionIndex);
+            Vector3 nextPosition = GetNextPosition(nextGridPosition,directionIndex);
             var angle = directionIndex == 2 ? -90 : 90; 
             
             _moveTween = transform.DOMove(nextPosition,_playerRollTime).SetEase(Ease.Linear);
@@ -87,9 +124,10 @@ public class Player : MonoBehaviour
             });
 
             yield return Yielder.Wait(_playerRollTime);
+            _gridPosition = nextGridPosition;
             ClearAnimation();
             
-            OnDoneMove.Invoke();
+            OnDoneMove?.Invoke();
             OnDoneMove = null;
         }
     }
