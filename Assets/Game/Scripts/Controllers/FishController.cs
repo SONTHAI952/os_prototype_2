@@ -26,7 +26,7 @@ public class FishController : MonoBehaviour
         _p2.y = .7f;
         
         _p3 = (_p5 + _p1) * 0.5f;
-        _p3.y = 1.3f;
+        _p3.y = 1.5f;
         
         _p4 = (_p5 + _p1) * 0.8f;
         _p4.y = .7f;

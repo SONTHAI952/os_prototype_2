@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform baseModel;
     [SerializeField] private Collider hitBox;
     [SerializeField] private Rigidbody body;
+    [SerializeField] private GameObject particle;
 
     public Action OnDoneMove;
 
@@ -160,6 +161,8 @@ public class Player : MonoBehaviour
     {
         ClearAnimation();
         baseModel.gameObject.SetActive(false);
+        hitBox.gameObject.SetActive(false);
+        Instantiate(particle, transform.position, Quaternion.identity);
         _active = false;
         OnDoneMove = null;
         GameEvents.OnLose.Emit(GameResult.Lose);

@@ -136,6 +136,7 @@ MonoBehaviour:
   baseModel: {fileID: 184483305316591157}
   hitBox: {fileID: 182871602269836137}
   body: {fileID: 7671877518960792057}
+  particle: {fileID: 1635286119921871887, guid: 555f1bc8fa6fa14489572bfe570bc3c0, type: 3}
 --- !u!65 &182871602269836137
 BoxCollider:
   m_ObjectHideFlags: 0
