@@ -84,14 +84,13 @@ public partial class ManagerGame //_Input
 							OnClick(touch.position);
 						}
 						
+						var delta = touch.position - touch0LastPosition;
 						touch0LastPosition = touch.position;
 
 						OnDrag(touch0LastPosition);
-						if (touch.deltaPosition != Vector2.zero && isTouching)
-						{
-							if (touch.deltaPosition.magnitude > gameFeelsSettings.swipeThreadshole) 
-								OnSwipe(touch.deltaPosition);
-						}
+						
+						if (delta != Vector2.zero && delta.magnitude > gameFeelsSettings.swipeThreadshole) 
+							OnSwipe(delta);
 						
 						isTouching = false;
 					}
@@ -222,7 +221,6 @@ public partial class ManagerGame //_Input
 	/// <param name="deltaPosition"></param>
 	private void OnSwipe(Vector2 delta)
 	{
-		// Nếu vuốt theo trục Y nhiều hơn trục X → bỏ qua
 		if (Mathf.Abs(delta.y) > Mathf.Abs(delta.x))
 			return;
 
