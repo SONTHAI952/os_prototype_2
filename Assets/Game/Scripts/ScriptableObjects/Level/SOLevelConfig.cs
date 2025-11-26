@@ -38,10 +38,4 @@ public class SOLevelConfig : ScriptableObject
 		}
 		return grid;
 	}
-	// [Header("Level Difficulty")]
-	// [Range(0f, 1f)] public float shuffleIntensity = 0.2f;
-
-
-
-
 }

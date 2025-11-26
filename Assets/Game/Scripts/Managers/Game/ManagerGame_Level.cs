@@ -1,4 +1,5 @@
 
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,6 +13,7 @@ public partial class ManagerGame //_Level
 	private int width, height;
 	private bool isInitialized = false;
 	private SOLevelConfig currentLevelConfig;
+	private List<FishController> _fishControllers = new List<FishController>();
 	 
 	protected override void OnDestroy()
 	{
@@ -61,12 +63,31 @@ public partial class ManagerGame //_Level
 			
 			boardController.Initialize(currentLevelConfig);
 			playerController.Initialize();
-			
+			InitFishControllers();
 			ManagerUI.Instance.Init();
 			
 			isInitialized = true;
 			
 			GameEvents.OnLevelLoaded.Emit();
+		}
+	}
+
+	void InitFishControllers()
+	{
+		_fishControllers.ForEach(c=>c.Init());
+	}
+
+	public void AddFishPivot(int id, Transform pivot)
+	{
+		if (id == 1)
+		{
+			var controller = Instantiate(fishControllerPrefab, transform);
+			controller.AddPivot(pivot);
+			_fishControllers.Add(controller);
+		}
+		else
+		{
+			_fishControllers.Last(c => c !=null).AddPivot(pivot);
 		}
 	}
 

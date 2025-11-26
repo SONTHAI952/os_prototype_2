@@ -9,9 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5262566563200496996}
-  - component: {fileID: 903513498638581620}
   - component: {fileID: 8844645512672802525}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,27 +37,6 @@ Transform:
   - {fileID: 6704100327408599084}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &903513498638581620
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 483168058927183904}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.5, y: 0.19, z: 1.5}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8844645512672802525
 MonoBehaviour:
   m_ObjectHideFlags: 0

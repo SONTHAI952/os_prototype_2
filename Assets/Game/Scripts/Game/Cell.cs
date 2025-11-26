@@ -28,7 +28,6 @@ public class Cell : MonoBehaviour
     [SerializeField] private Wood wood;
     [SerializeField] private FinishLine finishLine;
     
-    public const int Ball_To_Score = 5;
     public const float CELL_SIZE_X = 1f;
     public const float CELL_SIZE_Z = 1f;
     public bool isMerging;

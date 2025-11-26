@@ -53,3 +53,8 @@ public class MapPattern
 	public Grid<CellData> patterns;
 	public int diffucult;
 }
+
+public class FishData
+{
+	public HashSet<Vector2Int> PositionIndexes;
+}

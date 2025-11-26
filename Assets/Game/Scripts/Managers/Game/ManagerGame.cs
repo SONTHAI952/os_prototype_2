@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using CS;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -17,6 +18,7 @@ public partial class ManagerGame : Singleton_ManualSpawn<ManagerGame>
     [Header("Controller")]
     [SerializeField] BoardController boardController;
     [SerializeField] PlayerController playerController;
+    [SerializeField] FishController fishControllerPrefab;
     
     private Camera mainCamera;
     private bool   isPlayable;

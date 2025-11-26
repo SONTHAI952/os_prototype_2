@@ -15,7 +15,7 @@ public class BoardController : MonoBehaviour
     [SerializeField] Grid<CellData> grid; 
     
     private List<Cell> _finishLines = new List<Cell>();
-    
+
     public int Width = 0; 
     public int Length = 0; 
     public const float CELL_SPACING_X = 0f;
@@ -26,16 +26,11 @@ public class BoardController : MonoBehaviour
         grid = levelConfig.GetJoinGrid();
         Width = grid.Width;
         Length = grid.Height;
+        int fishPivotCount = 0; 
         
-        //Căn board về giữa
-        // Vector3 containerOffset = Vector3.zero;
-        // containerOffset.x = (Cell.CELL_SIZE_X  * .5f) - ((Width * (Cell.CELL_SIZE_X + CELL_SPACING_X) - CELL_SPACING_X) * .5f);
-        // containerOffset.z = (Cell.CELL_SIZE_Z  * .5f) - ((Length * (Cell.CELL_SIZE_Z + CELL_SPACING_Y) - CELL_SPACING_Y) * .7f);
-        // container.localPosition = containerOffset;
-
-        for (int i = 0; i < Width; i++)
+        for (int j = 0; j < Length; j++ )
         {
-            for (int j = 0; j < Length; j++)
+            for (int i = 0; i < Width; i++)
             {
                 if(grid[i, j].Type == CellType.None)
                     continue;
@@ -51,11 +46,17 @@ public class BoardController : MonoBehaviour
                 
                 if(cell.Type == CellType.Finish)
                     cell.FinishLine.Init(i, j);
+
+                if (cell.Type == CellType.Fish)
+                {
+                    fishPivotCount++;
+                    ManagerGame.Instance.AddFishPivot(fishPivotCount,cell.transform);
+                    if(fishPivotCount >= 2)
+                        fishPivotCount = 0;
+                }
             }
         }
     }
-
-
     
     public void Initialize(SOLevelConfig levelConfig)
     {
@@ -73,17 +74,8 @@ public class BoardController : MonoBehaviour
     
     private void ClearGrid()
     {
-        // if (m_Grid != null && m_Grid.Length != 0)
-        // {
-        //     foreach (var grid in m_Grid)
-        //     {
-        //         if (grid != null)
-        //             Destroy(grid.gameObject);
-        //     }
-        // }
-        // m_Grid = null;
+        
     }
-
 
     #region Querry
 
@@ -98,21 +90,6 @@ public class BoardController : MonoBehaviour
     {
         return grid[1, 1];
     }
-    
-    // public Cell GetCell(int x, int y)
-    // {
-    //     if (x < 0 || x >= m_Grid.GetLength(0) || y < 0 || y >= m_Grid.GetLength(1)) return null;
-    //     else return m_Grid[x, y];
-    // }
-    //
-    // public Cell GetCell(Vector2Int position)
-    // {
-    //     if (position.x < 0 || position.x >= m_Grid.GetLength(0) || position.y < 0 || position.y >= m_Grid.GetLength(1)) return null;
-    //     else return m_Grid[position.x, position.y];
-    // }
-
-    
-    
-
     #endregion
 }
+
