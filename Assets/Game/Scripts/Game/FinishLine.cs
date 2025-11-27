@@ -13,6 +13,6 @@ public class FinishLine : MonoBehaviour
     }
     public void SetupVisual(bool white)
     {
-        renderer.material = white ? materialWhite : materialBlack;
+        // renderer.material = white ? materialWhite : materialBlack;
     }
 }

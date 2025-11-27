@@ -18,7 +18,7 @@ public class FishController : MonoBehaviour
         if (_pivots.Count < 2)
             return;
         _fish = Instantiate(prefab);
-        
+        _fish.gameObject.SetActive(false);
         _p1 = _pivots[0].position;
         _p5 = _pivots[1].position;
         
@@ -35,6 +35,8 @@ public class FishController : MonoBehaviour
         {
             _p1,  _p3,  _p5
         };
+        var angle = _p5 - _p1;
+        _fish.rotation = Quaternion.LookRotation(angle);
         
         RunFishLoop();
     }

@@ -58,10 +58,14 @@ public class Cell : MonoBehaviour
         switch (type)
         {
             case CellType.Land:
+                land.Init();
                 land.gameObject.SetActive(true);
                 break;
             case CellType.Tree:
+                tree.Init();
                 tree.gameObject.SetActive(true);
+                land.Init();
+                land.gameObject.SetActive(true);
                 break;
             case CellType.Wood:
                 wood.gameObject.SetActive(true);

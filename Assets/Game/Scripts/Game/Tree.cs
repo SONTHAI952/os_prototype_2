@@ -1,16 +1,13 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Tree : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public List<GameObject> trees;
 
-    // Update is called once per frame
-    void Update()
+    public void Init()
     {
-        
+        var tree = trees.RandomElement();
+        tree.gameObject.SetActive(true);
     }
 }
