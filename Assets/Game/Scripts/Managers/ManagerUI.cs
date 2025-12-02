@@ -28,7 +28,7 @@ public class ManagerUI : Singleton_ManualSpawn<ManagerUI>
     #region Inspector Variables
     [SerializeField] private GameObject countDownPanel;
     [SerializeField] private TextMeshProUGUI txtTimer;
-    
+    [SerializeField] private Button startButton;
     [SerializeField] private List<Popup> PopupList;
     
     #endregion
@@ -46,17 +46,15 @@ public class ManagerUI : Singleton_ManualSpawn<ManagerUI>
     protected override void Awake()
     {
         GameEvents.OnStartPlaying.SubscribeOnceUntilDestroy(OnStartPlaying,this);
+        startButton.onClick.AddListener(OnButtonStart);
         base.Awake();
     }
 
     #endregion
     
-    #region Public Methods
-
     public void Init()
     {
-        countDownPanel.gameObject.SetActive(true);
-        ManagerGame.Instance.StartCoundown();
+        startButton.gameObject.SetActive(true);
     }
     public void OpenPopup(PopupType popupType)
     {
@@ -94,18 +92,16 @@ public class ManagerUI : Singleton_ManualSpawn<ManagerUI>
         txtTimer.text = seconds == 1 ? "GO" :$"{seconds-1}";
     }
 
+    private void OnButtonStart()
+    {
+        startButton.gameObject.SetActive(false);
+        countDownPanel.gameObject.SetActive(true);
+        ManagerGame.Instance.StartCoundown();
+    }
+    
     private void OnStartPlaying()
     {
         countDownPanel.gameObject.SetActive(false);
     }
     
-    #endregion
-    
-    #region Protected Methods
-    
-    #endregion
-    
-    #region Private Methods
-    
-    #endregion
 }
