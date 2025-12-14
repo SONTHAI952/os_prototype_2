@@ -30,7 +30,8 @@ public class ManagerUI : Singleton_ManualSpawn<ManagerUI>
     [SerializeField] private TextMeshProUGUI txtTimer;
     [SerializeField] private Button startButton;
     [SerializeField] private List<Popup> PopupList;
-    
+    [SerializeField] private Button leftButton;
+    [SerializeField] private Button rightButton;
     #endregion
     
     #region Member Variables
@@ -47,6 +48,8 @@ public class ManagerUI : Singleton_ManualSpawn<ManagerUI>
     {
         GameEvents.OnStartPlaying.SubscribeOnceUntilDestroy(OnStartPlaying,this);
         startButton.onClick.AddListener(OnButtonStart);
+        leftButton.onClick.AddListener(OnLeftButton);
+        rightButton.onClick.AddListener(OnRightButton);
         base.Awake();
     }
 
@@ -103,5 +106,14 @@ public class ManagerUI : Singleton_ManualSpawn<ManagerUI>
     {
         countDownPanel.gameObject.SetActive(false);
     }
+
+    void OnLeftButton()
+    {
+        ManagerGame.Instance.HandleSwipeMechanism(1);
+    }
     
+    void OnRightButton()
+    {
+        ManagerGame.Instance.HandleSwipeMechanism(2);
+    }
 }

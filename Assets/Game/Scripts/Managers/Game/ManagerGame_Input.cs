@@ -221,24 +221,24 @@ public partial class ManagerGame //_Input
 	/// <param name="deltaPosition"></param>
 	private void OnSwipe(Vector2 delta)
 	{
-		if (Mathf.Abs(delta.y) > Mathf.Abs(delta.x))
-			return;
-
-		// Detect trái / phải
-		if (delta.x > 0)
-		{
-			HandleSwipeMechanism(2);
-		}
-		else
-		{
-			HandleSwipeMechanism(1);
-		}
+		// if (Mathf.Abs(delta.y) > Mathf.Abs(delta.x))
+		// 	return;
+		//
+		// // Detect trái / phải
+		// if (delta.x > 0)
+		// {
+		// 	HandleSwipeMechanism(2);
+		// }
+		// else
+		// {
+		// 	HandleSwipeMechanism(1);
+		// }
 	}
 
 
 	private void OnDrag(Vector2 mousePosition)
 	{
-		HandleRaycastDragMechanism(mousePosition);
+		// HandleRaycastDragMechanism(mousePosition);
 	}
 	
 	
@@ -256,7 +256,7 @@ public partial class ManagerGame //_Input
 	/// </summary>
 	private void OnRelease()
 	{
-		HandleRelease();
+		// HandleRelease();
 	}
 	
 	

@@ -70,19 +70,19 @@ public partial class ManagerGame //_Core
 	}
 
 	Plane plane = new Plane(Vector3.up, Vector3.zero);
-	private void HandleRaycastDragMechanism(Vector2 mousePosition)
+	public void HandleRaycastDragMechanism(Vector2 mousePosition)
 	{
 		if (PlayerController && _active)
 			PlayerController.PendingNextMove(true);
 	}
 
-	private void HandleSwipeMechanism(int directionIndex)
+	public void HandleSwipeMechanism(int directionIndex)
 	{
 		if(PlayerController && _active)
 			PlayerController.MoveByInput(directionIndex);
 	}
 	
-	private void HandleRelease()
+	public void HandleRelease()
 	{
 		if (playerController)
 			playerController.PendingNextMove(false);
