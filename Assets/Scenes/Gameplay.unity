@@ -596,6 +596,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 604975133909015826, guid: 25db76f40591d1e49bfa2de5a151c57e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -114.40039
+      objectReference: {fileID: 0}
+    - target: {fileID: 1261961112898786782, guid: 25db76f40591d1e49bfa2de5a151c57e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -95.91992
+      objectReference: {fileID: 0}
+    - target: {fileID: 1261961112898786782, guid: 25db76f40591d1e49bfa2de5a151c57e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -113.30078
+      objectReference: {fileID: 0}
+    - target: {fileID: 1981311194178783218, guid: 25db76f40591d1e49bfa2de5a151c57e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -494.47266
+      objectReference: {fileID: 0}
     - target: {fileID: 7597597196116144571, guid: 25db76f40591d1e49bfa2de5a151c57e, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -697,6 +713,22 @@ PrefabInstance:
       propertyPath: cameraPivot
       value: 
       objectReference: {fileID: 522742727}
+    - target: {fileID: 4286047826992954745, guid: bbb6011a6bda01d41879d416087f14c3, type: 3}
+      propertyPath: skyboxMaterials.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286047826992954745, guid: bbb6011a6bda01d41879d416087f14c3, type: 3}
+      propertyPath: 'skyboxMaterials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a4be220830e90ea4eb88b48b7fd376ce, type: 2}
+    - target: {fileID: 4286047826992954745, guid: bbb6011a6bda01d41879d416087f14c3, type: 3}
+      propertyPath: 'skyboxMaterials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 42eaf2c5dbb13dc498f15df5a5b05fda, type: 2}
+    - target: {fileID: 4286047826992954745, guid: bbb6011a6bda01d41879d416087f14c3, type: 3}
+      propertyPath: 'skyboxMaterials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 69e10e886d52d20478f9ed5424126be8, type: 2}
     - target: {fileID: 4850232380969638614, guid: bbb6011a6bda01d41879d416087f14c3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

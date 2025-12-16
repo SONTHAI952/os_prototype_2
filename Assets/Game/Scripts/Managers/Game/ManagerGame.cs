@@ -19,7 +19,7 @@ public partial class ManagerGame : Singleton_ManualSpawn<ManagerGame>
     [SerializeField] BoardController boardController;
     [SerializeField] PlayerController playerController;
     [SerializeField] FishController fishControllerPrefab;
-    
+        
     private Camera mainCamera;
     private bool   isPlayable;
     private bool   isPointerOverUI;

@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 
 public partial class ManagerGame //_Level
 {
+	[Header("Sky Boxes")] 
+	[SerializeField] private List<Material> skyboxMaterials;
+	
+	private static int _currentSkyboxIndex;
 	private int _targetAmount;
 	private int _currentAmount;
 	private int _currentSecond;
@@ -24,6 +28,7 @@ public partial class ManagerGame //_Level
 
 	private void Awake_Level()
 	{
+		ChangeSkybox();
 	}
 	
 	private void Start_Level()
@@ -91,4 +96,15 @@ public partial class ManagerGame //_Level
 		}
 	}
 
+	private void ChangeSkybox()
+	{
+		RenderSettings.skybox = skyboxMaterials[_currentSkyboxIndex];
+
+		// Nếu dùng lighting realtime thì nên gọi thêm
+		DynamicGI.UpdateEnvironment();
+		if (_currentSkyboxIndex < skyboxMaterials.Count - 1)
+			_currentSkyboxIndex++;
+		else
+			_currentSkyboxIndex = 0;
+	}
 }
