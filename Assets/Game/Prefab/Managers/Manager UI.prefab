@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4336506565723667775
 RectTransform:
   m_ObjectHideFlags: 0
@@ -687,8 +687,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Level 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7d4b08f1e0816e0438de8594e3b7917a, type: 2}
-  m_sharedMaterial: {fileID: -8496534306284507724, guid: 7d4b08f1e0816e0438de8594e3b7917a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -792,8 +792,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 137, y: -114.4}
-  m_SizeDelta: {x: 189, y: 165}
+  m_AnchoredPosition: {x: 115.6, y: -321}
+  m_SizeDelta: {x: 128, y: 158}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3422098090148660186
 CanvasRenderer:
@@ -823,7 +823,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4c043840a69644a4397aa4727ec93677, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1763546ac361ea646bd08029c17c48cc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1263,8 +1263,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 2.4}
-  m_SizeDelta: {x: 103, y: 103}
+  m_AnchoredPosition: {x: -8, y: 11.64}
+  m_SizeDelta: {x: 60, y: 61}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3047329227427828581
 CanvasRenderer:
@@ -1294,7 +1294,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 122bbb0f15e92974c8390314fc7e2ca9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b553a920d40bc6045baaf14aef80683f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1597,10 +1597,10 @@ RectTransform:
   - {fileID: 6320161447237991431}
   m_Father: {fileID: 3734347623060284355}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -95.9187, y: -113.3}
-  m_SizeDelta: {x: 189, y: 165}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 115.6, y: -158}
+  m_SizeDelta: {x: 128, y: 158}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7530492747403202591
 CanvasRenderer:
@@ -1630,7 +1630,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4c043840a69644a4397aa4727ec93677, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1763546ac361ea646bd08029c17c48cc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1697,8 +1697,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 7.1}
-  m_SizeDelta: {x: 110, y: 110}
+  m_AnchoredPosition: {x: -6, y: 16}
+  m_SizeDelta: {x: 60, y: 61}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5726297578330230899
 CanvasRenderer:
@@ -1728,7 +1728,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e8826d9f8dbec544ab25cf6d0d47f700, type: 3}
+  m_Sprite: {fileID: 21300000, guid: edecf1326d43ce343bccdabcbd41df16, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2284,6 +2284,10 @@ PrefabInstance:
     - target: {fileID: 5120831824803431450, guid: 294f5078d856b6a41a02abeae85716ea, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6335506143526273306, guid: 294f5078d856b6a41a02abeae85716ea, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -494.47266
       objectReference: {fileID: 0}
     - target: {fileID: 7525271732205660239, guid: 294f5078d856b6a41a02abeae85716ea, type: 3}
       propertyPath: m_Name
