@@ -10,7 +10,9 @@ using UnityEngine.SceneManagement;
 public enum SceneIndexes
 {
 	Loading  = 0,
-	Gameplay = 1
+	Home  = 1,
+	LevelSelect  = 2,
+	Gameplay = 3
 }
 
 public class ManagerLoading : MonoBehaviour
@@ -52,7 +54,7 @@ public class ManagerLoading : MonoBehaviour
 				}
 			}
 		}
-		Loading();
+		LoadingTo(SceneIndexes.Home);
 	}
 	
 	private void OnDestroy()
@@ -67,9 +69,9 @@ public class ManagerLoading : MonoBehaviour
 	/// <summary>
 	/// Start animating text and filler while performing background loading
 	/// </summary>
-	private void Loading()
+	private void LoadingTo(SceneIndexes scene)
 	{
-		var sceneName = SceneIndexes.Gameplay.ToString();
+		var sceneName = scene.ToString();
 		if (isLoaded) SceneManager.UnloadSceneAsync(sceneName);
 		if (!isLoaded)
 		{
