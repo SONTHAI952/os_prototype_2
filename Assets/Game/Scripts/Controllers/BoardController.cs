@@ -88,7 +88,7 @@ public class BoardController : MonoBehaviour
 
     public CellData GetSpawnCell()
     {
-        return grid[1, 1];
+        return grid[1, 0];
     }
     #endregion
 }

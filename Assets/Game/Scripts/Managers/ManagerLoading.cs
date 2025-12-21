@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Threading.Tasks;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public enum SceneIndexes
 {
@@ -22,13 +23,14 @@ public class ManagerLoading : MonoBehaviour
 	#endregion
 	
 	#region Inspector Variables
-	
+
+	[SerializeField] private GameObject container;
 	[SerializeField] private TextMeshProUGUI textLoading;
 	[SerializeField] private TextMeshProUGUI textPercentage;
 	[SerializeField] private Image           loadingBar;
 	[SerializeField] private AnimationCurve  loadingCurve;
 	[SerializeField] private float           loadingDuration;
-	
+	[SerializeField] bool loadFromBoot = false;
 	#endregion
 	
 	#region Member Variables
@@ -39,20 +41,12 @@ public class ManagerLoading : MonoBehaviour
 	
 	#region Unity Methods
 	
-	private async void Start()
+	private  void Start()
 	{
-		await Task.Delay(150); // 0.15s delay
-		if (SceneManager.sceneCount > 0)
+		if (!loadFromBoot)
 		{
-			for (int i = 0; i < SceneManager.sceneCount; ++i)
-			{
-				var scene = SceneManager.GetSceneAt(i);
-				if (scene.name == SceneIndexes.Gameplay.ToString())
-				{
-					isLoaded = true;
-					break;
-				}
-			}
+			container.SetActive(false);
+			return;
 		}
 		LoadingTo(SceneIndexes.Home);
 	}
@@ -69,9 +63,23 @@ public class ManagerLoading : MonoBehaviour
 	/// <summary>
 	/// Start animating text and filler while performing background loading
 	/// </summary>
-	private void LoadingTo(SceneIndexes scene)
+	private async void LoadingTo(SceneIndexes sceneIndex)
 	{
-		var sceneName = scene.ToString();
+		await Task.Delay(150); // 0.15s delay
+		if (SceneManager.sceneCount > 0)
+		{
+			for (int i = 0; i < SceneManager.sceneCount; ++i)
+			{
+				var scene = SceneManager.GetSceneAt(i);
+				if (scene.name == sceneIndex.ToString())
+				{
+					isLoaded = true;
+					break;
+				}
+			}
+		}
+		container.SetActive(true);
+		var sceneName = sceneIndex.ToString();
 		if (isLoaded) SceneManager.UnloadSceneAsync(sceneName);
 		if (!isLoaded)
 		{
