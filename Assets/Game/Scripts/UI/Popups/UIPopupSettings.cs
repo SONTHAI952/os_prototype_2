@@ -7,6 +7,10 @@ public class UIPopupSettings : PanelAnimation
 	#region Inspector Variables
 	
 	[SerializeField] private ToggleSlider toggleSlider;
+	[SerializeField] private Button buttonOn;
+	[SerializeField] private Button buttonOff;
+	[SerializeField] private GameObject iconOn;
+	[SerializeField] private GameObject iconOff;
 	
 	#endregion
 	
