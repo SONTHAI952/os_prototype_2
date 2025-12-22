@@ -125,6 +125,7 @@ public class Player : MonoBehaviour
             _upTween = baseModel.DOLocalMoveY(.95f +.25f,_playerRollTime/2).SetEase(Ease.Linear);
             _upTween.OnComplete(() =>
             {
+                ManagerSounds.Instance.PlaySound(SoundType.Step);
                 _downTween = baseModel.DOLocalMoveY(.95F,_playerRollTime/2).SetEase(Ease.Linear);
             });
 

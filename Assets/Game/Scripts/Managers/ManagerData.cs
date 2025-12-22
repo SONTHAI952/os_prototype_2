@@ -21,11 +21,11 @@ public static class ManagerData
         set { PlayerPrefs.SetInt("CURRENT_LEVEL_MULTIPLIER", value); }
     }
     
-    /*public static bool SETTINGS_MUSIC_ON
+    public static bool SETTINGS_MUSIC_ON
     {
         get { return PlayerPrefs.GetInt("SETTINGS_MUSIC_ON", 1) == 1; }
         set { PlayerPrefs.SetInt("SETTINGS_MUSIC_ON", value ? 1 : 0); }
-    }*/
+    }
     
     public static bool SETTINGS_SOUND_ON
     {
@@ -44,6 +44,7 @@ public static class ManagerData
         if (MAX_LEVEL_UNLOCKED < MAX_LEVEL)
         {
             MAX_LEVEL_UNLOCKED++;
+            CURRENT_LEVEL_ID = MAX_LEVEL_UNLOCKED;
         }
     }
 }

@@ -14,8 +14,8 @@ public enum MusicType
 
 public enum SoundType
 {
-	Explode,
-	Shoot,
+	Step,
+	CLick,
 	Victory,
 	Lose,
 }
@@ -108,7 +108,7 @@ public class ManagerSounds : Singleton_ManualSpawn<ManagerSounds>
 	
 	public void PlayMusic(MusicType musicType, bool isRandom = true, bool isLoop = true)
 	{
-		if (!ManagerData.SETTINGS_SOUND_ON)
+		if (!ManagerData.SETTINGS_MUSIC_ON)
 		{
 			return;
 		}
