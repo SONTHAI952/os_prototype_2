@@ -47,14 +47,11 @@ MonoBehaviour:
   musicList:
   - musicType: 0
     musicClips:
-    - {fileID: 8300000, guid: 8953225a726f54641b9d46b9d0fd9803, type: 3}
+    - {fileID: 8300000, guid: 2887110e93a75434b9f2baae41157109, type: 3}
   soundList:
   - soundType: 0
     soundClips:
-    - {fileID: 8300000, guid: 00844f8caf081ca41ac945528ff12878, type: 3}
-  - soundType: 2
+    - {fileID: 8300000, guid: 82bf342692476cd46950649b21ca489b, type: 3}
+  - soundType: 1
     soundClips:
-    - {fileID: 8300000, guid: 77cad424ba995b64ab3f1807976c9113, type: 3}
-  - soundType: 3
-    soundClips:
-    - {fileID: 8300000, guid: 48c92c967c346de499a76c827b99be4d, type: 3}
+    - {fileID: 8300000, guid: ba49796f71ea17c4b91d59b38035939b, type: 3}

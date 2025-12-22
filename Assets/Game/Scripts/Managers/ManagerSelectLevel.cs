@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class ManagerSelectLevel : MonoBehaviour
 {
-    [SerializeField] private Button buttonHome;
-    [SerializeField] private Button buttonPlay;
-    [SerializeField] private ButtonLite buttonSettings;
+    [SerializeField] private ButtonBase buttonHome;
+    [SerializeField] private ButtonBase buttonPlay;
+    [SerializeField] private ButtonBase buttonSettings;
     [SerializeField] private TextMeshProUGUI txtLevel;
     [SerializeField] private GameObject popupSettings;
 

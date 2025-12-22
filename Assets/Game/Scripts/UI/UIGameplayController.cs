@@ -7,8 +7,8 @@ public class UIGameplayController : MonoBehaviour
 {
     #region Inspector Variables
     
-    [SerializeField] private ButtonLite buttonRestart;
-    [SerializeField] private ButtonLite buttonSettings;
+    [SerializeField] private ButtonBase buttonRestart;
+    [SerializeField] private ButtonBase buttonSettings;
     [SerializeField] private TMP_Text levelText;
     
     #endregion
@@ -26,8 +26,8 @@ public class UIGameplayController : MonoBehaviour
     private void Awake()
     {
         GameEvents.OnLevelLoaded.SubscribeUntilDestroy(OnLevelLoaded, this);
-        if (buttonRestart) buttonRestart.onClick.AddListener(OnButtonRestartClick);
-        if (buttonSettings) buttonSettings.onClick.AddListener(OnButtonSettingsClick);
+        if (buttonRestart) buttonRestart.AddListener(OnButtonRestartClick);
+        if (buttonSettings) buttonSettings.AddListener(OnButtonSettingsClick);
     }
     
     #endregion

@@ -112,6 +112,7 @@ public class ButtonBase : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
         switch (buttonType)
         {
             case ButtonType.Normal:
+                ManagerSounds.Instance.PlaySound(SoundType.CLick);
                 break;
             case ButtonType.Purchase:
                 //SoundManager.Instance.PlayPurchaseSound();

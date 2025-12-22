@@ -28,10 +28,10 @@ public class ManagerUI : Singleton_ManualSpawn<ManagerUI>
     #region Inspector Variables
     [SerializeField] private GameObject countDownPanel;
     [SerializeField] private TextMeshProUGUI txtTimer;
-    [SerializeField] private Button startButton;
+    [SerializeField] private ButtonBase startButton;
     [SerializeField] private List<Popup> PopupList;
-    [SerializeField] private Button leftButton;
-    [SerializeField] private Button rightButton;
+    [SerializeField] private ButtonBase leftButton;
+    [SerializeField] private ButtonBase rightButton;
     #endregion
     
     #region Member Variables
@@ -47,9 +47,9 @@ public class ManagerUI : Singleton_ManualSpawn<ManagerUI>
     protected override void Awake()
     {
         GameEvents.OnStartPlaying.SubscribeOnceUntilDestroy(OnStartPlaying,this);
-        startButton.onClick.AddListener(OnButtonStart);
-        leftButton.onClick.AddListener(OnLeftButton);
-        rightButton.onClick.AddListener(OnRightButton);
+        startButton.AddListener(OnButtonStart);
+        leftButton.AddListener(OnLeftButton);
+        rightButton.AddListener(OnRightButton);
         base.Awake();
     }
 
