@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     
     private bool _active = false;
     public bool Active => _active;
+    public Vector2Int GridPosition => _gridPosition;
     public void Initialize(Vector2Int gridPosition)
     {
         _settings = ManagerGame.Instance.GameFeelsSettings;

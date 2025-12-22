@@ -30,11 +30,17 @@ public class PlayerController : MonoBehaviour
     {
         if(!CanMove())
             return;
-        
+
+        if (IsInTutorialPos())
+        {
+            ManagerGame.Instance.StopAndShowTutorial();
+            return;
+        }
         _player.Move(0);
     }
     public void MoveByInput(int directionIndex)
     { 
+        Debug.LogError("MoveByInput");
         if (_player == null || !_player.Active || !_active)
             return;
         if (_player.IsRolling())
@@ -77,5 +83,15 @@ public class PlayerController : MonoBehaviour
     public void Stop()
     {
         _active = false;
+    }
+
+    Vector2Int _tutPos = new Vector2Int(1,8);
+    public bool IsInTutorialPos()
+    {
+        bool cond1 = !ManagerData.TUTORIAL_COMPLETED;
+        bool cond2 = ManagerData.CURRENT_LEVEL_ID == 1;
+        bool cond3 = _player.GridPosition == _tutPos ;
+        
+        return cond1 && cond2 && cond3;
     }
 }

@@ -58,4 +58,13 @@ public static class ManagerData
     {
         TUTORIAL_COMPLETED = true;
     }
+    
+    
+    public static bool IsTutorial()
+    {
+        bool cond1 = !ManagerData.TUTORIAL_COMPLETED;
+        bool cond2 = ManagerData.CURRENT_LEVEL_ID == 1;
+        
+        return cond1 && cond2;
+    }
 }

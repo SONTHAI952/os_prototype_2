@@ -26,12 +26,15 @@ public class Popup
 public class ManagerUI : Singleton_ManualSpawn<ManagerUI>
 {
     #region Inspector Variables
+
+    [SerializeField] private GameObject overlay;
     [SerializeField] private GameObject countDownPanel;
     [SerializeField] private TextMeshProUGUI txtTimer;
     [SerializeField] private ButtonBase startButton;
     [SerializeField] private List<Popup> PopupList;
     [SerializeField] private ButtonBase leftButton;
     [SerializeField] private ButtonBase rightButton;
+    [SerializeField] private GameObject tutorialPanel;
     #endregion
     
     #region Member Variables
@@ -97,6 +100,10 @@ public class ManagerUI : Singleton_ManualSpawn<ManagerUI>
 
     private void OnButtonStart()
     {
+        if (ManagerData.IsTutorial())
+        {
+            ToggleOverlay(true);
+        }
         startButton.gameObject.SetActive(false);
         countDownPanel.gameObject.SetActive(true);
         ManagerGame.Instance.StartCoundown();
@@ -115,7 +122,22 @@ public class ManagerUI : Singleton_ManualSpawn<ManagerUI>
     
     void OnRightButton()
     {
+        if(ManagerData.IsTutorial())
+            GameEvents.OnTutorialCompleted.Emit();
+        
         ManagerGame.Instance.HandleSwipeMechanism(2);
         ManagerSounds.Instance.PlaySound(SoundType.CLick);
+    }
+
+    public void ToggleOverlay(bool value)
+    {
+        overlay.transform.SetAsLastSibling();
+        overlay.SetActive(value);
+    }
+
+    public void ShowTutorial(bool value)
+    {
+        tutorialPanel.SetActive(value);
+        rightButton.transform.SetAsLastSibling();
     }
 }

@@ -29,7 +29,8 @@ public partial class ManagerGame //_Core
 		
 		GameEvents.OnLose.SubscribeUntilDestroy(r=> SetGameResult(r), this);
 		GameEvents.OnWin.SubscribeUntilDestroy(r=> SetGameResult(r), this);
-		GameEvents.OnStartPlaying.SubscribeOnceUntilDestroy(() => OnStartPlaying(), this);
+		GameEvents.OnStartPlaying.SubscribeOnceUntilDestroy(OnStartPlaying, this);
+		GameEvents.OnTutorialCompleted.SubscribeOnceUntilDestroy(CompleteTutorial, this);
 	}
 	
 	private void Start_Core()
@@ -114,7 +115,10 @@ public partial class ManagerGame //_Core
 				case GameResult.Win:
 					if (ManagerData.MAX_LEVEL_UNLOCKED <= ManagerData.CURRENT_LEVEL_ID)
 						ManagerData.UnlockCurrentLevel();
-					
+					else
+					{
+						ManagerData.CURRENT_LEVEL_ID = ManagerData.MAX_LEVEL_UNLOCKED;	
+					}
 					ManagerUI.Instance.OpenPopup(PopupType.Victory);
 					// ManagerSounds.Instance.PlaySound(SoundType.Victory);
 					break;
@@ -168,5 +172,24 @@ public partial class ManagerGame //_Core
 	{
 		ActiveGameStatus(true);
 		_canCountDown = false;
+	}
+	
+	public void StartTutorial()
+	{
+		ManagerUI.Instance.ToggleOverlay(true);
+	}
+	
+	public void StopAndShowTutorial()
+	{
+		ActiveGameStatus(false);
+		ManagerUI.Instance.ShowTutorial(true);
+	}
+	
+	public void CompleteTutorial()
+	{
+		ActiveGameStatus(true);
+		ManagerUI.Instance.ToggleOverlay(false);
+		ManagerUI.Instance.ShowTutorial(false);
+		ManagerData.TUTORIAL_COMPLETED = true;
 	}
 }
