@@ -49,9 +49,7 @@ public class UIGameplayController : MonoBehaviour
     
     private void OnButtonRestartClick()
     {
-        // ManagerUI.Instance.OpenPopup(PopupType.Restart);
-        
-        ManagerGame.Instance.RestartLevel();
+        ManagerUI.Instance.OpenPopup(PopupType.Restart);
     }
     
     private void OnButtonSettingsClick()

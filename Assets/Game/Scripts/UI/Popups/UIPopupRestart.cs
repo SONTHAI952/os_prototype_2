@@ -43,7 +43,7 @@ public class UIPopupRestart : PanelAnimation
 	
 	private void OnButtonYesClick()
 	{
-		ManagerGame.Instance.RestartLevel();
+		ManagerLoading.Instance.LoadingTo(SceneIndexes.Home);
 	}
 	
 	#endregion
