@@ -37,6 +37,12 @@ public static class ManagerData
     {
         get { return PlayerPrefs.GetInt("SETTINGS_VIBRATION_ON", 1) == 1; }
         set { PlayerPrefs.SetInt("SETTINGS_VIBRATION_ON", value ? 1 : 0); }
+    } 
+    
+    public static bool TUTORIAL_COMPLETED
+    {
+        get { return PlayerPrefs.GetInt("TUTORIAL_COMPLETED", 0) == 1; }
+        set { PlayerPrefs.SetInt("TUTORIAL_COMPLETED", value ? 1 : 0); }
     }
 
     public static void UnlockCurrentLevel()
@@ -46,5 +52,10 @@ public static class ManagerData
             MAX_LEVEL_UNLOCKED++;
             CURRENT_LEVEL_ID = MAX_LEVEL_UNLOCKED;
         }
+    }
+
+    public static void SetCompleteTutorial()
+    {
+        TUTORIAL_COMPLETED = true;
     }
 }
