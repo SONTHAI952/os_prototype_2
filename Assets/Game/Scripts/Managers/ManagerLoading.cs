@@ -7,16 +7,17 @@ using System.Collections;
 using System.Threading.Tasks;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
+using ZeroX.SingletonSystem;
 
 public enum SceneIndexes
 {
-	Loading  = 0,
+	Boot  = 0,
 	Home  = 1,
 	LevelSelect  = 2,
 	Gameplay = 3
 }
 
-public class ManagerLoading : MonoBehaviour
+public class ManagerLoading : Singleton_ManualSpawn<ManagerLoading>
 {
 	#region Enums
 	
@@ -63,7 +64,7 @@ public class ManagerLoading : MonoBehaviour
 	/// <summary>
 	/// Start animating text and filler while performing background loading
 	/// </summary>
-	private async void LoadingTo(SceneIndexes sceneIndex)
+	public async void LoadingTo(SceneIndexes sceneIndex)
 	{
 		await Task.Delay(150); // 0.15s delay
 		if (SceneManager.sceneCount > 0)
