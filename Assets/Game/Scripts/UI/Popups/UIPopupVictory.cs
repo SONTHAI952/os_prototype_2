@@ -40,7 +40,8 @@ public class UIPopupVictory : PanelAnimation
 	
 	private void OnButtonNextClick()
 	{
-		ManagerGame.Instance.LoadNextLevel();
+		ManagerLoading.Instance.LoadingTo(SceneIndexes.LevelSelect);
+		// ManagerGame.Instance.LoadNextLevel();
 	}
 	
 	#endregion

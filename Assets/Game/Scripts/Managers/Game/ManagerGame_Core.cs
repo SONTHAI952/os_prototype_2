@@ -112,6 +112,9 @@ public partial class ManagerGame //_Core
 			{
 				case GameResult.None: break;
 				case GameResult.Win:
+					if (ManagerData.MAX_LEVEL_UNLOCKED <= ManagerData.CURRENT_LEVEL_ID)
+						ManagerData.UnlockCurrentLevel();
+					
 					ManagerUI.Instance.OpenPopup(PopupType.Victory);
 					// ManagerSounds.Instance.PlaySound(SoundType.Victory);
 					break;

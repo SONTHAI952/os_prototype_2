@@ -2,10 +2,17 @@ using UnityEngine;
 
 public static class ManagerData
 {
+    private const int MAX_LEVEL = 20;
     public static int CURRENT_LEVEL_ID
     {
         get { return PlayerPrefs.GetInt("CURRENT_LEVEL_ID", 1); }
         set { PlayerPrefs.SetInt("CURRENT_LEVEL_ID", value); }
+    }
+    
+    public static int MAX_LEVEL_UNLOCKED
+    {
+        get { return PlayerPrefs.GetInt("MAX_LEVEL_UNLOCKED", 1); }
+        set { PlayerPrefs.SetInt("MAX_LEVEL_UNLOCKED", value); }
     }
     
     public static int CURRENT_LEVEL_MULTIPLIER
@@ -30,5 +37,13 @@ public static class ManagerData
     {
         get { return PlayerPrefs.GetInt("SETTINGS_VIBRATION_ON", 1) == 1; }
         set { PlayerPrefs.SetInt("SETTINGS_VIBRATION_ON", value ? 1 : 0); }
+    }
+
+    public static void UnlockCurrentLevel()
+    {
+        if (MAX_LEVEL_UNLOCKED < MAX_LEVEL)
+        {
+            MAX_LEVEL_UNLOCKED++;
+        }
     }
 }

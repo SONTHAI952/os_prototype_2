@@ -22,8 +22,6 @@ public class UIPopupSettings : PanelAnimation
 	
 	#endregion
 	
-	#region Unity Methods
-	
 	protected new void Awake()
 	{
 		base.Awake();
@@ -36,23 +34,9 @@ public class UIPopupSettings : PanelAnimation
 		onPanelCloseAction = () => ManagerGame.Instance.ActiveGameStatus(true);
 	}
 	
-	#endregion
-	
-	#region Public Methods
-	
-	#endregion
-	
-	#region Protected Methods
-	
-	#endregion
-	
-	#region Private Methods
-	
 	private void OnToggleSliderValueChanged(bool isOn)
 	{
 		ManagerData.SETTINGS_SOUND_ON = isOn;
 		GameEvents.OnSettingsChanged.Emit(isOn);
 	}
-	
-	#endregion
 }

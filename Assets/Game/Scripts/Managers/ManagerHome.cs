@@ -14,6 +14,6 @@ public class ManagerHome : MonoBehaviour
 
     void OnPlayButton()
     {
-        ManagerLoading.Instance.LoadingTo(SceneIndexes.Gameplay);
+        ManagerLoading.Instance.LoadingTo(SceneIndexes.LevelSelect);
     }
 }

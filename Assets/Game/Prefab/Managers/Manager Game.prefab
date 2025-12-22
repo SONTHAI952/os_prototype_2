@@ -59,6 +59,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   offsetY: 1.5
+  skyboxMaterials:
+  - {fileID: 2100000, guid: a4be220830e90ea4eb88b48b7fd376ce, type: 2}
+  - {fileID: 2100000, guid: 42eaf2c5dbb13dc498f15df5a5b05fda, type: 2}
+  - {fileID: 2100000, guid: 69e10e886d52d20478f9ed5424126be8, type: 2}
 --- !u!1001 &154267513141101851
 PrefabInstance:
   m_ObjectHideFlags: 0
