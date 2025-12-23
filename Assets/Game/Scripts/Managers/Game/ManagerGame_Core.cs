@@ -45,7 +45,7 @@ public partial class ManagerGame //_Core
 
 	private void Update_Core()
 	{
-		if (PlayerController && _active && _hasStarted && !_popupOn)
+		if (PlayerController && _active && _hasStarted && !_popupOn && _gameResult == GameResult.None)
 			PlayerController.CheckMove();
 		
 		CheckCountdown();

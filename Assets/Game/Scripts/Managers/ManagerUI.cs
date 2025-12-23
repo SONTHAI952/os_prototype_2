@@ -117,7 +117,6 @@ public class ManagerUI : Singleton_ManualSpawn<ManagerUI>
     void OnLeftButton()
     {
         ManagerGame.Instance.HandleSwipeMechanism(1);
-        ManagerSounds.Instance.PlaySound(SoundType.CLick);
     }
     
     void OnRightButton()
@@ -126,7 +125,6 @@ public class ManagerUI : Singleton_ManualSpawn<ManagerUI>
             GameEvents.OnTutorialCompleted.Emit();
         
         ManagerGame.Instance.HandleSwipeMechanism(2);
-        ManagerSounds.Instance.PlaySound(SoundType.CLick);
     }
 
     public void ToggleOverlay(bool value)

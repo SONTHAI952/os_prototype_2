@@ -56,8 +56,8 @@ public class ManagerSounds : Singleton_ManualSpawn<ManagerSounds>
 	
 	#region Member Variables
 	
-	private List<AudioSource> musicAudiosourceList = new();
-	private List<AudioSource> soundAudiosourceList = new();
+	public List<AudioSource> musicAudiosourceList = new();
+	public List<AudioSource> soundAudiosourceList = new();
 	private List<AudioClip>   musicClips           = new();
 	private List<AudioClip>   soundClips           = new();
 	private GameObject        musicObject;
@@ -75,8 +75,8 @@ public class ManagerSounds : Singleton_ManualSpawn<ManagerSounds>
 	
 	private void Awake()
 	{
-		CreateMusicAudioSource(5);
-		CreateSoundAudioSource(10);
+		CreateMusicAudioSource(10);
+		CreateSoundAudioSource(100);
 		GameEvents.OnSettingsChanged.SubscribeUntilDestroy(OnSettingsChanged, this);
 	}
 	
@@ -89,7 +89,7 @@ public class ManagerSounds : Singleton_ManualSpawn<ManagerSounds>
 	
 	#region Public Methods
 	
-	public void PlaySound(SoundType soundType, bool isRandom = true, bool isLoop = false)
+	public void PlaySound(SoundType soundType, bool isRandom = false, bool isLoop = false)
 	{
 		if (!ManagerData.SETTINGS_SOUND_ON)
 		{
@@ -104,10 +104,11 @@ public class ManagerSounds : Singleton_ManualSpawn<ManagerSounds>
 		}
 		
 		var soundAudiosource = soundAudiosourceList.FirstOrDefault(audiosource => (!audiosource.clip));
+		if (!soundAudiosource) return;
 		StartAudio(soundAudiosource, soundClip, isLoop);
 	}
 	
-	public void PlayMusic(MusicType musicType, bool isRandom = true, bool isLoop = true)
+	public void PlayMusic(MusicType musicType, bool isRandom = false, bool isLoop = true)
 	{
 		if (!ManagerData.SETTINGS_MUSIC_ON)
 		{
@@ -199,6 +200,12 @@ public class ManagerSounds : Singleton_ManualSpawn<ManagerSounds>
 	
 	private void StartAudio(AudioSource audioSource, AudioClip clip, bool loop)
 	{
+		if (audioSource == null)
+		{
+			Debug.LogError("null audio source");
+			return;
+		}
+		
 		audioSource.clip = clip;
 		audioSource.loop = loop;
 		audioSource.Play();

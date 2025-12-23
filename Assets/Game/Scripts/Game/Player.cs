@@ -103,7 +103,7 @@ public class Player : MonoBehaviour
     
     public void Move(int id)
     {
-        if(IsRolling())
+        if(IsRolling() || !baseModel.gameObject.activeSelf)
             return;
         
         int directionIndex = id;
