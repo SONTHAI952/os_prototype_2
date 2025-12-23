@@ -119,12 +119,14 @@ public partial class ManagerGame //_Core
 					{
 						ManagerData.CURRENT_LEVEL_ID = ManagerData.MAX_LEVEL_UNLOCKED;	
 					}
+					ManagerSounds.Instance.StopMusic(MusicType.Gameplay);
+					ManagerSounds.Instance.PlaySound(SoundType.Victory);
 					ManagerUI.Instance.OpenPopup(PopupType.Victory);
-					// ManagerSounds.Instance.PlaySound(SoundType.Victory);
 					break;
 				case GameResult.Lose:
+					ManagerSounds.Instance.StopMusic(MusicType.Gameplay);
+					ManagerSounds.Instance.PlaySound(SoundType.Lose);
 					ManagerUI.Instance.OpenPopup(PopupType.Lose);
-					// ManagerSounds.Instance.PlaySound(SoundType.Lose);
 					break;
 				default: throw new ArgumentOutOfRangeException();
 			}

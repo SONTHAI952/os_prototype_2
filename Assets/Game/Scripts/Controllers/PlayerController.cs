@@ -40,7 +40,6 @@ public class PlayerController : MonoBehaviour
     }
     public void MoveByInput(int directionIndex)
     { 
-        Debug.LogError("MoveByInput");
         if (_player == null || !_player.Active || !_active)
             return;
         if (_player.IsRolling())
