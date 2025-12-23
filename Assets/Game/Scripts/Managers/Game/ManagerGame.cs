@@ -6,7 +6,7 @@ using ZeroX.SingletonSystem;
 
 public enum GameResult
 {
-    None, Win, Lose,
+    None, Win, Lose,End
 }
 
 public partial class ManagerGame : Singleton_ManualSpawn<ManagerGame>

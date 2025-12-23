@@ -11,6 +11,8 @@ public partial class ManagerGame //_Core
 {
 	private GameResult _gameResult;
 	
+	private bool _hasStarted = false;
+	private bool _popupOn = false;
 	private bool _active = true;
 	
 	private CancellationTokenSource _cts;
@@ -22,6 +24,8 @@ public partial class ManagerGame //_Core
 	private bool IsAnyTurretAssignmentRunning => _turretRunningAssignments.Count > 0;
 	private bool isAnyAssignmentRunning       => IsAnyBulletAssignmentRunning || IsAnyTurretAssignmentRunning;
 
+	
+	public GameResult GameResult => _gameResult;
 
 	private void Awake_Core()
 	{
@@ -29,6 +33,7 @@ public partial class ManagerGame //_Core
 		
 		GameEvents.OnLose.SubscribeUntilDestroy(r=> SetGameResult(r), this);
 		GameEvents.OnWin.SubscribeUntilDestroy(r=> SetGameResult(r), this);
+		GameEvents.OnEnd.SubscribeUntilDestroy(r=> SetGameResult(r), this);
 		GameEvents.OnStartPlaying.SubscribeOnceUntilDestroy(OnStartPlaying, this);
 		GameEvents.OnTutorialCompleted.SubscribeOnceUntilDestroy(CompleteTutorial, this);
 	}
@@ -40,7 +45,7 @@ public partial class ManagerGame //_Core
 
 	private void Update_Core()
 	{
-		if (PlayerController && _active)
+		if (PlayerController && _active && _hasStarted && !_popupOn)
 			PlayerController.CheckMove();
 		
 		CheckCountdown();
@@ -73,13 +78,13 @@ public partial class ManagerGame //_Core
 	Plane plane = new Plane(Vector3.up, Vector3.zero);
 	public void HandleRaycastDragMechanism(Vector2 mousePosition)
 	{
-		if (PlayerController && _active)
+		if (PlayerController && _active && _hasStarted && !_popupOn)
 			PlayerController.PendingNextMove(true);
 	}
 
 	public void HandleSwipeMechanism(int directionIndex)
 	{
-		if(PlayerController && _active)
+		if(PlayerController && _active && _hasStarted && !_popupOn)
 			PlayerController.MoveByInput(directionIndex);
 	}
 	
@@ -128,7 +133,8 @@ public partial class ManagerGame //_Core
 					ManagerSounds.Instance.PlaySound(SoundType.Lose);
 					ManagerUI.Instance.OpenPopup(PopupType.Lose);
 					break;
-				default: throw new ArgumentOutOfRangeException();
+				default:
+					break;
 			}
 		}
 	}
@@ -170,10 +176,16 @@ public partial class ManagerGame //_Core
 		_active = value;
 	}
 
+	public void TogglePopupStatus(bool value)
+	{
+		_popupOn = value;
+	}
+
 	private void OnStartPlaying()
 	{
 		ActiveGameStatus(true);
 		_canCountDown = false;
+		_hasStarted = true;
 	}
 	
 	public void StartTutorial()

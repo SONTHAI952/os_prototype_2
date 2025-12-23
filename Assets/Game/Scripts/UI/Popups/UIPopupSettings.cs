@@ -15,8 +15,8 @@ public class UIPopupSettings : PanelAnimation
 	{
 		base.Awake();
 		GameEvents.OnSettingsChanged.SubscribeUntilDestroy(UpdateUI ,this);
-		onPanelOpenAction = () => ManagerGame.Instance?.ActiveGameStatus(false);
-		onPanelCloseAction = () => ManagerGame.Instance?.ActiveGameStatus(true);
+		onPanelOpenAction = () => ManagerGame.Instance?.TogglePopupStatus(true);
+		onPanelCloseAction = () => ManagerGame.Instance?.TogglePopupStatus(false);
 		buttonOn.onClick.AddListener(OnButtonOn);
 		buttonOff.onClick.AddListener(OnButtonOff);
 		UpdateUI(ManagerData.SETTINGS_SOUND_ON);

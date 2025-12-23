@@ -165,6 +165,10 @@ public class Player : MonoBehaviour
         baseModel.gameObject.SetActive(false);
         hitBox.gameObject.SetActive(false);
         Instantiate(particle, transform.position, Quaternion.identity);
+        
+        if(ManagerGame.Instance.GameResult != GameResult.End)
+            ManagerSounds.Instance.PlaySound(SoundType.Collide);
+        
         _active = false;
         OnDoneMove = null;
         GameEvents.OnLose.Emit(GameResult.Lose);

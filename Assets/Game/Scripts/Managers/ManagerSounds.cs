@@ -15,6 +15,7 @@ public enum MusicType
 public enum SoundType
 {
 	Step,
+	Collide,
 	CLick,
 	Victory,
 	Lose,
